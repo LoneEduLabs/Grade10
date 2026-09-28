@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Classwork 3 | Abstraction in Computing</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📙</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>:root{--paper:#FFFFFF;--canvas:#F1F3F7;--ink:#1A2233;--muted:#5B6579;--line:#D9DEE7;
+--ok:#1D7A46;--ok-bg:#E3F3E9;--bad:#BF3A30;--bad-bg:#FBE8E6}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--canvas);color:var(--ink);font:16px/1.6 'Lexend',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+button{font:inherit;color:inherit}
+.hero{background:var(--ink);color:#fff;padding:44px 0 100px}
+.hero-in{max-width:980px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:1.25fr 1fr;gap:36px;align-items:end}
+.kicker{font-size:.95rem;color:#AEB8CC;margin:0 0 8px}
+.hero h1{font-size:clamp(2.6rem,7vw,4.4rem);line-height:1;letter-spacing:-.02em;margin:0;font-weight:700}
+.topic{font-size:1.3rem;margin:14px 0 0;color:#E3E8F2;font-weight:300}
+.pills{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px}
+.pill{font-size:.8rem;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:4px 12px;color:#D6DCE8}
+.stack{display:flex;flex-direction:column;gap:5px}
+.band{display:flex;justify-content:space-between;align-items:center;padding:9px 14px;border-radius:8px;font-size:.84rem}
+.band em{font-style:normal;font-size:.72rem;opacity:.85}
+.b1{background:var(--accent);color:#fff}
+.b2{background:rgba(255,255,255,.16);margin-left:12px}
+.b3{background:rgba(255,255,255,.11);margin-left:24px;color:#C9D1E0}
+.b4{background:rgba(255,255,255,.07);margin-left:36px;color:#9FA9BD}
+.b5{background:rgba(255,255,255,.04);margin-left:48px;color:#7F8AA0}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px 96px}
+.student{background:var(--paper);border-radius:16px;margin-top:-64px;padding:22px 24px;box-shadow:0 14px 34px -20px rgba(26,34,51,.5);display:grid;grid-template-columns:2fr 1fr 1fr;gap:16px;position:relative}
+.field label{display:block;font-size:.86rem;font-weight:500;color:var(--muted);margin-bottom:6px}
+.txt{width:100%;font:inherit;color:var(--ink);background:#F7F8FB;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;transition:border-color .15s,background .15s}
+textarea.txt{resize:vertical;min-height:70px;line-height:1.5}
+.txt:focus{outline:none;border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px var(--accent-soft)}
+.txt:disabled{color:var(--ink);-webkit-text-fill-color:var(--ink);opacity:1;background:#fff}
+.field.missing .txt{border-color:var(--bad);background:var(--bad-bg)}
+.note{margin:18px 0 0;padding:14px 18px;border-radius:12px;background:var(--accent-soft);color:#2A3346;font-size:.93rem}
+.progress{position:sticky;top:0;z-index:30;background:rgba(241,243,247,.94);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:12px 0}
+.progress-in{display:flex;align-items:center;gap:14px;font-size:.86rem;color:var(--muted)}
+.bar{flex:1;height:8px;background:#DDE2EA;border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--accent);border-radius:99px;transition:width .3s}
+.section{margin-top:34px}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.section-head h2{font-size:1.5rem;margin:0;letter-spacing:-.01em}
+.section-head p{margin:0;color:var(--muted);font-size:.9rem}
+.card{background:var(--paper);border-radius:16px;padding:24px;margin-bottom:16px;border:1px solid #E3E7EE}
+.card h3{margin:0;font-size:1.12rem;line-height:1.35}
+.card .sub{margin:6px 0 0;color:var(--muted);font-size:.92rem}
+.scn-top{display:flex;gap:14px;align-items:center}
+.num{flex:none;width:42px;height:42px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-weight:700;font-size:1.05rem}
+.scn-text{margin:16px 0 20px;background:#F6F8FC;border-radius:12px;padding:16px 18px;color:#2A3346;line-height:1.7}
+.qlist{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.qrow label{display:block;font-weight:500;margin-bottom:6px}
+.qn{color:var(--accent);font-weight:700;margin-right:6px}
+.mcq-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.opt{position:relative;display:flex;gap:12px;align-items:center;padding:11px 14px;border:1.5px solid var(--line);border-radius:10px;cursor:pointer;background:#fff;transition:border-color .15s,background .15s}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.letter{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:#EEF1F6;font-weight:600;font-size:.84rem;flex:none}
+.opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+.opt.sel .letter{background:var(--accent);color:#fff}
+.opt:focus-within{box-shadow:0 0 0 3px var(--accent-soft)}
+.opt.is-right{border-color:var(--ok)!important;background:var(--ok-bg)!important}
+.opt.is-right .letter{background:var(--ok);color:#fff}
+.opt.is-wrong{border-color:var(--bad)!important;background:var(--bad-bg)!important}
+.opt.is-wrong .letter{background:var(--bad);color:#fff}
+.table-wrap{overflow-x:auto}
+.yn{width:100%;border-collapse:collapse;min-width:520px}
+.yn th,.yn td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+.yn th{font-size:.84rem;color:var(--muted);font-weight:500}
+.yn td.c,.yn th.c{text-align:center;width:96px}
+.yn tr.q.row-right td:first-child{box-shadow:inset 4px 0 0 var(--ok)}
+.yn tr.q.row-wrong td:first-child{box-shadow:inset 4px 0 0 var(--bad)}
+.ynb{display:inline-flex;align-items:center;justify-content:center;min-width:64px;padding:7px 12px;border-radius:999px;border:1.5px solid var(--line);cursor:pointer;font-size:.88rem;font-weight:500;position:relative}
+.ynb input{position:absolute;opacity:0;pointer-events:none}
+.ynb.sel{background:var(--accent);border-color:var(--accent);color:#fff}
+.ynb:focus-within{box-shadow:0 0 0 3px var(--accent-soft)}
+.chip{display:inline-flex;align-items:center;padding:8px 14px;border-radius:10px;background:#fff;border:1.5px solid #C6CFE0;box-shadow:0 2px 0 #C6CFE0;cursor:grab;user-select:none;-webkit-user-select:none;touch-action:none;font-size:.92rem;font-weight:500;line-height:1.3}
+.chip:focus-visible{outline:3px solid var(--accent-soft);outline-offset:2px}
+.chip.selected{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.chip.dragging{opacity:.3}
+.chip.right{border-color:var(--ok);background:var(--ok-bg);box-shadow:none}
+.chip.wrong{border-color:var(--bad);background:var(--bad-bg);box-shadow:none}
+.ghost{position:fixed;z-index:1000;pointer-events:none;margin:0;transform:rotate(-2deg);box-shadow:0 14px 26px -10px rgba(0,0,0,.35)}
+.tray{display:flex;flex-wrap:wrap;gap:10px;padding:14px;border:1.5px dashed var(--line);border-radius:12px;min-height:62px;background:#FAFBFD;margin-top:16px;align-items:flex-start}
+.tray:empty::before{content:'Every card has been placed';color:var(--muted);font-size:.85rem;align-self:center}
+.zone.hover{border-color:var(--accent)!important;background:var(--accent-soft)!important}
+.buckets{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.bucket{border:1.5px dashed #BFC8D8;border-radius:12px;padding:12px 14px;min-height:150px;background:#fff}
+.bucket h4{margin:0 0 10px;font-size:.95rem;font-weight:600}
+.zone-body{display:flex;flex-wrap:wrap;gap:8px;min-height:60px}
+.slots{display:grid;gap:8px;margin-top:14px}
+.slot{display:flex;align-items:center;gap:12px}
+.slot .sn{width:auto;min-width:92px;font-size:.84rem;color:var(--muted)}
+.slot .zone{flex:1;min-height:50px;border:1.5px dashed #BFC8D8;border-radius:10px;padding:4px;display:flex;align-items:center;background:#fff}
+.blanks{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+.blanks li{line-height:2.4}
+.blank{display:inline-flex;min-width:150px;min-height:42px;vertical-align:middle;border:1.5px dashed #BFC8D8;border-radius:10px;margin:0 4px;align-items:center;justify-content:center;padding:2px;background:#fff}
+.match{display:grid;grid-template-columns:1fr 1.4fr;gap:12px 28px;margin-top:16px}
+.mcol{display:grid;gap:10px;align-content:start}
+.mcol h4{margin:0;font-size:.84rem;color:var(--muted);font-weight:500}
+.mitem{text-align:left;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;background:#fff;cursor:pointer;display:flex;gap:12px;align-items:center;min-height:52px}
+.mitem .tag{width:28px;height:28px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:.8rem;font-weight:700;background:#EEF1F6;color:#9AA3B5}
+.mitem.active{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.mitem.paired .tag,.mleft .tag{color:#fff}
+.mitem.right{border-color:var(--ok);background:var(--ok-bg)}
+.mitem.wrong{border-color:var(--bad);background:var(--bad-bg)}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
+.tile{padding:14px 12px;border:1.5px solid var(--line);border-radius:12px;background:#fff;cursor:pointer;text-align:center;font-weight:500;font-size:.93rem}
+.tile.sel{border-color:var(--accent);background:var(--accent-soft)}
+.tile.right{border-color:var(--ok)!important;background:var(--ok-bg)!important}
+.tile.wrong{border-color:var(--bad)!important;background:var(--bad-bg)!important}
+.mini{display:grid;gap:12px}
+.mini .card{margin:0}
+.algo{margin:14px 0 0;padding:16px 18px 16px 44px;background:#F6F8FC;border-radius:12px;line-height:1.8}
+.algo li{padding-left:4px}
+details.hint{margin-top:12px;font-size:.9rem;color:var(--muted)}
+details.hint summary{cursor:pointer;color:var(--accent);font-weight:500}
+.flow-area{display:grid;grid-template-columns:1fr 250px;gap:18px;margin-top:18px;align-items:start}
+.flow-wrap{overflow-x:auto;border:1px solid #E3E7EE;border-radius:12px;background:#FAFBFD}
+.flow{position:relative;width:600px;height:730px;margin:0 auto}
+.flow svg.arrows{position:absolute;inset:0;width:100%;height:100%}
+.fslot{position:absolute;width:200px;height:76px;border:2px dashed #BFC8D8;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.7)}
+.fslot:empty::before{content:'Drop a shape';color:#A3ADBF;font-size:.8rem}
+.shape-tray{position:sticky;top:64px;margin-top:0;flex-direction:column;align-items:center}
+.chip.shape{position:relative;width:184px;height:64px;padding:0 24px;justify-content:center;text-align:center;background:none;border:none;box-shadow:none;font-size:.84rem}
+.chip.shape svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.chip.shape svg *{fill:#fff;stroke:var(--ink);stroke-width:2;vector-effect:non-scaling-stroke}
+.chip.shape span{position:relative}
+.chip.shape.selected svg *{stroke:var(--accent);stroke-width:3;fill:var(--accent-soft)}
+.chip.shape.right svg *{fill:var(--ok-bg);stroke:var(--ok)}
+.chip.shape.wrong svg *{fill:var(--bad-bg);stroke:var(--bad)}
+.chip.shape.d{padding:0 40px}
+.submit-card{text-align:center;padding:32px 24px}
+.submit-card p{color:var(--muted);margin:0 0 18px}
+.btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{font-weight:600;border:none;border-radius:12px;padding:14px 26px;cursor:pointer;font-size:1rem}
+.btn:focus-visible{outline:3px solid var(--accent-soft);outline-offset:2px}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-ghost{background:#fff;border:1.5px solid var(--line)}
+.result{display:none;text-align:left;margin-top:22px;border-radius:14px;background:var(--accent-soft);padding:20px 22px}
+.result.show{display:block}
+.result h3{margin:0 0 6px;font-size:1.3rem}
+.result table{border-collapse:collapse;margin-top:10px;width:100%;max-width:460px}
+.result td{padding:6px 0;border-bottom:1px solid rgba(0,0,0,.08)}
+.result td:last-child{text-align:right;font-weight:600}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:var(--ink);color:#fff;padding:12px 18px;border-radius:12px;font-size:.9rem;opacity:0;transition:.25s;pointer-events:none;z-index:2000;max-width:90vw}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+body.locked .chip,body.locked .mitem,body.locked .tile,body.locked .opt,body.locked .ynb{cursor:default}
+footer{margin-top:40px;text-align:center;color:var(--muted);font-size:.84rem}
+@media (max-width:760px){
+.hero{padding-top:32px}
+.hero-in{grid-template-columns:1fr}
+.student{grid-template-columns:1fr}
+.mcq-opts,.buckets,.match{grid-template-columns:1fr}
+.tiles{grid-template-columns:1fr 1fr}
+.flow-area{grid-template-columns:1fr}
+.shape-tray{position:static;flex-direction:row;justify-content:center}
+.card{padding:18px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media print{
+.progress,.btns,.toast,.submit-card>p{display:none!important}
+body{background:#fff}
+.card{break-inside:avoid}
+.student{margin-top:-40px;box-shadow:none;border:1px solid #ccc}
+.hero{padding-bottom:70px}
+}
+
+:root{--accent:#6A3FC1;--accent-soft:#ECE5FA}</style></head>
+<body>
+<header class="hero"><div class="hero-in">
+ <div><p class="kicker">Grade 10 Computer Science</p><h1>CLASSWORK 3</h1>
+ <p class="topic">Abstraction in Computing</p>
+ <div class="pills"><span class="pill">5 drag and drop</span><span class="pill">5 matching</span><span class="pill">Flowchart builder</span><span class="pill">Odd one out</span><span class="pill">Benefit detective</span></div></div>
+ <div class="stack" aria-hidden="true">
+  <div class="band b1"><span>Application</span><em>you see this</em></div>
+  <div class="band b2"><span>Programming language</span></div>
+  <div class="band b3"><span>Operating system</span></div>
+  <div class="band b4"><span>Machine / assembly</span></div>
+  <div class="band b5"><span>Hardware</span><em>hidden</em></div>
+ </div></div></header>
+<main class="wrap">
+ <section class="student" aria-label="Student details">
+  <div class="field"><label for="s-name">Enter Name</label><input class="txt" id="s-name" type="text" placeholder="Full name"></div>
+  <div class="field"><label for="s-sid">Enter SID</label><input class="txt" id="s-sid" type="text" placeholder="Student ID"></div>
+  <div class="field"><label for="s-grade">Enter Grade</label><input class="txt" id="s-grade" type="text" placeholder="e.g. 10A"></div>
+ </section>
+ <p class="note">Drag cards with a mouse or finger. You can also tap a card and then tap the box where it goes. Everything except the exit ticket is marked automatically when you submit. Pasting is switched off in the typing boxes.</p>
+ <div class="progress"><div class="progress-in"><span id="prog-count">0 answered</span><div class="bar"><i id="prog-bar"></i></div></div></div>
+ <section class="section" data-title="Part A: Drag and drop"><div class="section-head"><h2>Part A: Drag and drop</h2><p>5 questions</p></div><article class="card q" data-type="dd" data-q="1. Driving a car: seen or hidden?"><div class="scn-top"><div class="num">1</div><div><h3>Driving a car: seen or hidden?</h3><p class="sub">Drag each card into the correct box.</p></div></div><div class="tray zone" data-shuffle><div class="chip" data-ans="v">Steering wheel</div><div class="chip" data-ans="v">Brake pedal</div><div class="chip" data-ans="v">Speedometer</div><div class="chip" data-ans="h">Fuel injection</div><div class="chip" data-ans="h">Engine control software</div><div class="chip" data-ans="h">Sensor wiring</div></div><div class="buckets"><div class="bucket zone" data-ans="v" data-label="What the driver sees"><h4>What the driver sees</h4><div class="zone-body"></div></div><div class="bucket zone" data-ans="h" data-label="What is hidden underneath"><h4>What is hidden underneath</h4><div class="zone-body"></div></div></div></article><article class="card q" data-type="dd" data-q="2. Build the stack"><div class="scn-top"><div class="num">2</div><div><h3>Build the stack</h3><p class="sub">Place the five levels of abstraction in order, from the user at the top to the bottom.</p></div></div><div class="tray zone" data-shuffle><div class="chip" data-ans="1">Application</div><div class="chip" data-ans="2">Programming language</div><div class="chip" data-ans="3">Operating system</div><div class="chip" data-ans="4">Machine / assembly</div><div class="chip" data-ans="5">Hardware</div></div><div class="slots"><div class="slot"><span class="sn">1  Top (user)</span><div class="zone" data-cap="1" data-ans="1" data-label="1  Top (user)"></div></div><div class="slot"><span class="sn">2</span><div class="zone" data-cap="1" data-ans="2" data-label="2"></div></div><div class="slot"><span class="sn">3</span><div class="zone" data-cap="1" data-ans="3" data-label="3"></div></div><div class="slot"><span class="sn">4</span><div class="zone" data-cap="1" data-ans="4" data-label="4"></div></div><div class="slot"><span class="sn">5  Bottom</span><div class="zone" data-cap="1" data-ans="5" data-label="5  Bottom"></div></div></div></article><article class="card q" data-type="dd" data-q="3. What happens when you tap an app icon?"><div class="scn-top"><div class="num">3</div><div><h3>What happens when you tap an app icon?</h3><p class="sub">Put the five steps in the order they happen.</p></div></div><div class="tray zone" data-shuffle><div class="chip" data-ans="1">User taps the icon</div><div class="chip" data-ans="2">App shows a simple screen</div><div class="chip" data-ans="3">Code requests data from a server</div><div class="chip" data-ans="4">Server queries a database</div><div class="chip" data-ans="5">Network protocols move the data</div></div><div class="slots"><div class="slot"><span class="sn">Step 1</span><div class="zone" data-cap="1" data-ans="1" data-label="Step 1"></div></div><div class="slot"><span class="sn">Step 2</span><div class="zone" data-cap="1" data-ans="2" data-label="Step 2"></div></div><div class="slot"><span class="sn">Step 3</span><div class="zone" data-cap="1" data-ans="3" data-label="Step 3"></div></div><div class="slot"><span class="sn">Step 4</span><div class="zone" data-cap="1" data-ans="4" data-label="Step 4"></div></div><div class="slot"><span class="sn">Step 5</span><div class="zone" data-cap="1" data-ans="5" data-label="Step 5"></div></div></div></article><article class="card q" data-type="dd" data-q="4. Washing machine: interface or implementation?"><div class="scn-top"><div class="num">4</div><div><h3>Washing machine: interface or implementation?</h3><p class="sub">Sort the parts into the correct box.</p></div></div><div class="tray zone" data-shuffle><div class="chip" data-ans="i">Cotton button</div><div class="chip" data-ans="i">Spin button</div><div class="chip" data-ans="i">Start button</div><div class="chip" data-ans="m">Heating element</div><div class="chip" data-ans="m">Water-level sensor</div><div class="chip" data-ans="m">Safety lock</div></div><div class="buckets"><div class="bucket zone" data-ans="i" data-label="Interface (visible)"><h4>Interface (visible)</h4><div class="zone-body"></div></div><div class="bucket zone" data-ans="m" data-label="Implementation (hidden)"><h4>Implementation (hidden)</h4><div class="zone-body"></div></div></div></article><article class="card q" data-type="dd" data-q="5. Fill in the blanks"><div class="scn-top"><div class="num">5</div><div><h3>Fill in the blanks</h3><p class="sub">Drag a word into each gap. One word is not needed.</p></div></div><div class="tray zone" data-shuffle><div class="chip" data-ans="Abstraction">Abstraction</div><div class="chip" data-ans="interface">interface</div><div class="chip" data-ans="implementation">implementation</div><div class="chip" data-ans="modularity">modularity</div><div class="chip" data-ans="complexity">complexity</div><div class="chip" data-ans="x" data-distractor>hardware</div></div><ol class="blanks"><li>1.  <span class="blank zone" data-cap="1" data-ans="Abstraction" data-label="1. ____ means hiding unnecessary detail and showing only what is essential."></span> means hiding unnecessary detail and showing only what is essential.</li><li>2. The simple part of a system that a user interacts with is the <span class="blank zone" data-cap="1" data-ans="interface" data-label="2. The simple part of a system that a user interacts with is the ____ ."></span> .</li><li>3. The hidden inner workings behind an interface are the <span class="blank zone" data-cap="1" data-ans="implementation" data-label="3. The hidden inner workings behind an interface are the ____ ."></span> .</li><li>4. Building a system from separate, manageable parts is called <span class="blank zone" data-cap="1" data-ans="modularity" data-label="4. Building a system from separate, manageable parts is called ____ ."></span> .</li><li>5. The amount of detailed, intricate information in a system is its <span class="blank zone" data-cap="1" data-ans="complexity" data-label="5. The amount of detailed, intricate information in a system is its ____ ."></span> .</li></ol></article></section><section class="section" data-title="Part B: Matching"><div class="section-head"><h2>Part B: Matching</h2><p>5 matches</p></div><article class="card q" data-type="match" data-q="Match each level of abstraction to what happens there"><h3>Match each level of abstraction to what happens there</h3><p class="sub">Tap a level, then tap the description that matches it. Tap a level again to undo its match.</p><div class="match"><div class="mcol"><h4>Level</h4><button type="button" class="mitem mleft" data-id="app" data-label="Application"><span class="tag"></span>Application</button><button type="button" class="mitem mleft" data-id="pl" data-label="Programming language"><span class="tag"></span>Programming language</button><button type="button" class="mitem mleft" data-id="os" data-label="Operating system"><span class="tag"></span>Operating system</button><button type="button" class="mitem mleft" data-id="mc" data-label="Machine / assembly"><span class="tag"></span>Machine / assembly</button><button type="button" class="mitem mleft" data-id="hw" data-label="Hardware"><span class="tag"></span>Hardware</button></div><div class="mcol" ><h4>Description</h4><div class="mcol" data-shuffle><button type="button" class="mitem mright" data-id="app" data-label="Apps and user interfaces, such as a photo-editing app"><span class="tag"></span>Apps and user interfaces, such as a photo-editing app</button><button type="button" class="mitem mright" data-id="pl" data-label="High-level code, such as Python or Java"><span class="tag"></span>High-level code, such as Python or Java</button><button type="button" class="mitem mright" data-id="os" data-label="Manages memory, files and processes"><span class="tag"></span>Manages memory, files and processes</button><button type="button" class="mitem mright" data-id="mc" data-label="Instructions the processor executes"><span class="tag"></span>Instructions the processor executes</button><button type="button" class="mitem mright" data-id="hw" data-label="Transistors, circuits and logic gates"><span class="tag"></span>Transistors, circuits and logic gates</button></div></div></div></article></section><section class="section" data-title="Part C: Algorithm to flowchart"><div class="section-head"><h2>Part C: Algorithm to flowchart</h2><p>8 boxes to fill</p></div><article class="card q" data-type="dd" data-q="Flowchart for the ATM algorithm (6 steps)"><h3>Algorithm: taking cash from an ATM</h3><p class="sub">Read the 6-step algorithm, then build its flowchart by dragging the shapes into the empty boxes. Two shapes are not needed.</p><ol class="algo"><li>Start.</li><li>Input the PIN.</li><li>Is the PIN correct? If No, output “Wrong PIN” and go back to step 2. If Yes, go to step 4.</li><li>Input the amount of cash.</li><li>Count out the notes.</li><li>Output the cash, then Stop.</li></ol>
+<details class="hint"><summary>Need a hint about shapes?</summary><p>Oval: start or stop. Parallelogram: input or output. Rectangle: a process. Diamond: a yes/no decision.</p></details>
+<div class="flow-area"><div class="flow-wrap"><div class="flow"><svg class="arrows" viewBox="0 0 600 730" aria-hidden="true"><defs><marker id="ah" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5B6579"/></marker></defs>
+<g stroke="#5B6579" stroke-width="2" fill="none"><line x1="200" y1="86" x2="200" y2="114" marker-end="url(#ah)"/><line x1="200" y1="190" x2="200" y2="218" marker-end="url(#ah)"/><line x1="200" y1="294" x2="200" y2="322" marker-end="url(#ah)"/><line x1="200" y1="398" x2="200" y2="426" marker-end="url(#ah)"/><line x1="200" y1="502" x2="200" y2="530" marker-end="url(#ah)"/><line x1="200" y1="606" x2="200" y2="634" marker-end="url(#ah)"/><line x1="300" y1="256" x2="366" y2="256" marker-end="url(#ah)"/><path d="M470 218 V152 H304" marker-end="url(#ah)"/></g>
+<g font-family="Lexend,sans-serif" font-size="13" font-weight="600" fill="#1A2233"><text x="210" y="316">Yes</text><text x="318" y="248">No</text></g></svg><div class="fslot zone" data-cap="1" data-ans="s1" data-label="Box 1 (top)" style="left:100px;top:10px" aria-label="Flowchart box 1"></div><div class="fslot zone" data-cap="1" data-ans="s2" data-label="Box 2" style="left:100px;top:114px" aria-label="Flowchart box 2"></div><div class="fslot zone" data-cap="1" data-ans="s3" data-label="Box 3" style="left:100px;top:218px" aria-label="Flowchart box 3"></div><div class="fslot zone" data-cap="1" data-ans="s4" data-label="Box 4" style="left:100px;top:322px" aria-label="Flowchart box 4"></div><div class="fslot zone" data-cap="1" data-ans="s5" data-label="Box 5" style="left:100px;top:426px" aria-label="Flowchart box 5"></div><div class="fslot zone" data-cap="1" data-ans="s6" data-label="Box 6" style="left:100px;top:530px" aria-label="Flowchart box 6"></div><div class="fslot zone" data-cap="1" data-ans="s7" data-label="Box 7 (bottom)" style="left:100px;top:634px" aria-label="Flowchart box 7"></div><div class="fslot zone" data-cap="1" data-ans="s3b" data-label="Side box (No branch)" style="left:370px;top:218px" aria-label="Flowchart side box"></div></div></div><div class="tray zone shape-tray" data-shuffle><div class="chip shape" data-ans="s1"><svg viewBox="0 0 184 64" preserveAspectRatio="none" aria-hidden="true"><rect x="1" y="1" width="182" height="62" rx="31"/></svg><span>Start</span></div><div class="chip shape" data-ans="s2"><svg viewBox="0 0 184 64" preserveAspectRatio="none" aria-hidden="true"><polygon points="22,1 183,1 162,63 1,63"/></svg><span>Input PIN</span></div><div class="chip shape d" data-ans="s3"><svg viewBox="0 0 184 64" preserveAspectRatio="none" aria-hidden="true"><polygon points="92,0 184,32 92,64 0,32"/></svg><span>PIN correct?</span></div><div class="chip shape" data-ans="s3b"><svg viewBox="0 0 184 64" preserveAspectRatio="none" aria-hidden="true"><polygon points="22,1 183,1 162,63 1,63"/></svg><span>Output “Wrong PIN”</span></div><div class="chip shape" data-ans="s4"><svg viewBox="0 0 184 64" preserveAspectRatio="none" aria-hidden="true"><polygon points="22,1 183,1 162,63 1,63"/></svg><span>Input amount</span></div><div class="chip shape" data-ans="s5"><svg viewBox="0 0 184 64" preserveAspectRatio="none" aria-hidden="true"><rect x="1" y="1" width="182" height="62" rx="3"/></svg><span>Count out the notes</span></div><div class="chip shape" data-ans="s6"><svg viewBox="0 0 184 64" preserveAspectRatio="none" aria-hidden="true"><polygon points="22,1 183,1 162,63 1,63"/></svg><span>Output cash</span></div><div class="chip shape" data-ans="s7"><svg viewBox="0 0 184 64" preserveAspectRatio="none" aria-hidden="true"><rect x="1" y="1" width="182" height="62" rx="31"/></svg><span>Stop</span></div><div class="chip shape" data-ans="x" data-distractor><svg viewBox="0 0 184 64" preserveAspectRatio="none" aria-hidden="true"><rect x="1" y="1" width="182" height="62" rx="3"/></svg><span>Delete the account</span></div><div class="chip shape d" data-ans="x" data-distractor><svg viewBox="0 0 184 64" preserveAspectRatio="none" aria-hidden="true"><polygon points="92,0 184,32 92,64 0,32"/></svg><span>Is it raining?</span></div></div></div></article></section><section class="section" data-title="Part D: Odd one out"><div class="section-head"><h2>Part D: Odd one out</h2><p>Tap the item that does not belong</p></div><div class="mini"><article class="card q" data-type="pick" data-answer="c" data-q="1. Which one is NOT something a driver sees?"><div class="scn-top"><div class="num">1</div><h3>Which one is NOT something a driver sees?</h3></div><div class="tiles"><button type="button" class="tile" data-v="a" aria-pressed="false">Steering wheel</button><button type="button" class="tile" data-v="b" aria-pressed="false">Speedometer</button><button type="button" class="tile" data-v="c" aria-pressed="false">Fuel injection</button><button type="button" class="tile" data-v="d" aria-pressed="false">Brake pedal</button></div></article><article class="card q" data-type="pick" data-answer="b" data-q="2. Which one is NOT a level of abstraction?"><div class="scn-top"><div class="num">2</div><h3>Which one is NOT a level of abstraction?</h3></div><div class="tiles"><button type="button" class="tile" data-v="a" aria-pressed="false">Application</button><button type="button" class="tile" data-v="b" aria-pressed="false">Keyboard</button><button type="button" class="tile" data-v="c" aria-pressed="false">Operating system</button><button type="button" class="tile" data-v="d" aria-pressed="false">Hardware</button></div></article><article class="card q" data-type="pick" data-answer="d" data-q="3. Which one is NOT hidden when you send an email?"><div class="scn-top"><div class="num">3</div><h3>Which one is NOT hidden when you send an email?</h3></div><div class="tiles"><button type="button" class="tile" data-v="a" aria-pressed="false">Servers</button><button type="button" class="tile" data-v="b" aria-pressed="false">Protocols</button><button type="button" class="tile" data-v="c" aria-pressed="false">Networking</button><button type="button" class="tile" data-v="d" aria-pressed="false">Send button</button></div></article></div></section><section class="section" data-title="Part E: Benefit detective"><div class="section-head"><h2>Part E: Benefit detective</h2><p>Which benefit of levels of abstraction does each situation show?</p></div><div class="mini"><article class="card q" data-type="pick" data-answer="a" data-q="1. A hardware engineer designs chips and never has to write apps."><div class="scn-top"><div class="num">1</div><h3>A hardware engineer designs chips and never has to write apps.</h3></div><div class="tiles"><button type="button" class="tile" data-v="a" aria-pressed="false">Specialization</button><button type="button" class="tile" data-v="b" aria-pressed="false">Simplicity</button><button type="button" class="tile" data-v="c" aria-pressed="false">Modularity &amp; reuse</button><button type="button" class="tile" data-v="d" aria-pressed="false">Easier maintenance</button></div></article><article class="card q" data-type="pick" data-answer="b" data-q="2. A new student learns one layer at a time without needing to understand the whole computer."><div class="scn-top"><div class="num">2</div><h3>A new student learns one layer at a time without needing to understand the whole computer.</h3></div><div class="tiles"><button type="button" class="tile" data-v="a" aria-pressed="false">Specialization</button><button type="button" class="tile" data-v="b" aria-pressed="false">Simplicity</button><button type="button" class="tile" data-v="c" aria-pressed="false">Modularity &amp; reuse</button><button type="button" class="tile" data-v="d" aria-pressed="false">Easier maintenance</button></div></article><article class="card q" data-type="pick" data-answer="c" data-q="3. A phone gets a new operating system, and the layers above it do not need rebuilding."><div class="scn-top"><div class="num">3</div><h3>A phone gets a new operating system, and the layers above it do not need rebuilding.</h3></div><div class="tiles"><button type="button" class="tile" data-v="a" aria-pressed="false">Specialization</button><button type="button" class="tile" data-v="b" aria-pressed="false">Simplicity</button><button type="button" class="tile" data-v="c" aria-pressed="false">Modularity &amp; reuse</button><button type="button" class="tile" data-v="d" aria-pressed="false">Easier maintenance</button></div></article><article class="card q" data-type="pick" data-answer="d" data-q="4. A bug in a game is fixed without changing the operating system or the hardware."><div class="scn-top"><div class="num">4</div><h3>A bug in a game is fixed without changing the operating system or the hardware.</h3></div><div class="tiles"><button type="button" class="tile" data-v="a" aria-pressed="false">Specialization</button><button type="button" class="tile" data-v="b" aria-pressed="false">Simplicity</button><button type="button" class="tile" data-v="c" aria-pressed="false">Modularity &amp; reuse</button><button type="button" class="tile" data-v="d" aria-pressed="false">Easier maintenance</button></div></article></div></section><section class="section" data-title="Part F: Exit ticket 3-2-1"><div class="section-head"><h2>Part F: Exit ticket 3-2-1</h2><p>Your reflection, read by your teacher</p></div><article class="card q" data-type="text" data-q="3. Write 3 things you learned about abstraction today."><div class="scn-top"><div class="num">3</div><h3><label for="ex1">Write 3 things you learned about abstraction today.</label></h3></div><textarea class="txt" id="ex1" rows="3" maxlength="500" placeholder="Type your answer" style="margin-top:14px"></textarea></article><article class="card q" data-type="text" data-q="2. Write 2 real-world examples of abstraction you can now explain."><div class="scn-top"><div class="num">2</div><h3><label for="ex2">Write 2 real-world examples of abstraction you can now explain.</label></h3></div><textarea class="txt" id="ex2" rows="3" maxlength="500" placeholder="Type your answer" style="margin-top:14px"></textarea></article><article class="card q" data-type="text" data-q="1. Write 1 question you still have about levels of abstraction."><div class="scn-top"><div class="num">1</div><h3><label for="ex3">Write 1 question you still have about levels of abstraction.</label></h3></div><textarea class="txt" id="ex3" rows="3" maxlength="500" placeholder="Type your answer" style="margin-top:14px"></textarea></article></section>
+ <section class="card submit-card">
+  <p>Check every answer, then submit. Once submitted, your answers are locked and you can download your marked PDF.</p>
+  <div class="btns"><button class="btn btn-primary" id="submit-btn" type="button">Submit classwork</button>
+  <button class="btn btn-ghost" id="pdf-btn" type="button">Download PDF</button></div>
+  <div class="result" id="result" aria-live="polite"></div>
+ </section>
+ <footer>Grade 10 Computer Science &nbsp;|&nbsp; Abstraction in Computing &nbsp;|&nbsp; Classwork 3</footer>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+let submitted=false,lastResult=null,submittedAt='';
+const toastEl=document.createElement('div');toastEl.className='toast';toastEl.setAttribute('role','status');document.body.appendChild(toastEl);
+let tt;function toast(m){toastEl.textContent=m;toastEl.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>toastEl.classList.remove('show'),2400);}
+
+/* ---------- Paste lock: typing allowed, pasting blocked ---------- */
+const isField=el=>el&&el.matches&&el.matches('.txt');
+const blockMsg='Pasting is turned off. Please type your answer.';
+['paste','drop'].forEach(ev=>document.addEventListener(ev,e=>{if(isField(e.target)){e.preventDefault();toast(blockMsg);}},true));
+document.addEventListener('beforeinput',e=>{if(isField(e.target)&&/insertFromPaste|insertFromDrop|insertFromYank/.test(e.inputType)){e.preventDefault();toast(blockMsg);}},true);
+document.addEventListener('keydown',e=>{if(isField(e.target)&&(((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='v')||(e.shiftKey&&e.key==='Insert'))){e.preventDefault();toast(blockMsg);}},true);
+document.addEventListener('contextmenu',e=>{if(isField(e.target))e.preventDefault();},true);
+$$('.txt').forEach(el=>{el.setAttribute('autocomplete','off');el.setAttribute('spellcheck','false');el.setAttribute('autocorrect','off');el.setAttribute('autocapitalize','off');});
+
+/* ---------- Shuffle ---------- */
+function shuffle(box){const c=[...box.children];for(let i=c.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[c[i],c[j]]=[c[j],c[i]];}c.forEach(x=>box.appendChild(x));}
+$$('[data-shuffle]').forEach(shuffle);
+
+/* ---------- Progress ---------- */
+function answered(q){
+  switch(q.dataset.type){
+    case 'text':return !!q.querySelector('.txt').value.trim();
+    case 'mcq':case 'yn':return !!q.querySelector('input[type=radio]:checked');
+    case 'dd':return !q.querySelector('.tray .chip:not([data-distractor])');
+    case 'match':return $$('.mleft',q).every(b=>b.dataset.pair);
+    case 'pick':return !!q.querySelector('.tile.sel');
+  }return false;}
+function updateProgress(){const qs=$$('.q');const n=qs.filter(answered).length;
+  $('#prog-count').textContent=`${n} of ${qs.length} answered`;$('#prog-bar').style.width=(qs.length?n/qs.length*100:0)+'%';}
+document.addEventListener('input',updateProgress);
+
+/* ---------- MCQ & yes/no ---------- */
+document.addEventListener('change',e=>{
+  if(e.target.type==='radio'){const q=e.target.closest('.q');$$('.opt,.ynb',q).forEach(l=>l.classList.toggle('sel',l.querySelector('input').checked));}
+  updateProgress();});
+
+/* ---------- Pick tiles ---------- */
+document.addEventListener('click',e=>{const t=e.target.closest('.tile');if(!t||submitted)return;
+  const q=t.closest('.q');$$('.tile',q).forEach(x=>x.classList.toggle('sel',x===t));$$('.tile',q).forEach(x=>x.setAttribute('aria-pressed',x===t));updateProgress();});
+
+/* ---------- Drag & drop (mouse, touch, tap-to-place, keyboard) ---------- */
+let drag=null,selected=null;
+function bodyOf(z){return z.querySelector(':scope > .zone-body')||z;}
+function select(c){if(selected)selected.classList.remove('selected');selected=c;if(c)c.classList.add('selected');}
+function place(chip,zone){
+  if(!zone||chip.closest('.q')!==zone.closest('.q'))return;
+  const from=chip.parentElement,body=bodyOf(zone),cap=+zone.dataset.cap||0;
+  if(body===from){select(null);return;}
+  if(cap){const ex=$$(':scope > .chip',body);if(ex.length>=cap)from.appendChild(ex[0]);}
+  body.appendChild(chip);select(null);updateProgress();}
+function zoneAt(x,y,chip){const el=document.elementFromPoint(x,y);const z=el&&el.closest('.zone');return z&&z.closest('.q')===chip.closest('.q')?z:null;}
+let hoverZ=null;function setHover(z){if(hoverZ)hoverZ.classList.remove('hover');hoverZ=z;if(z)z.classList.add('hover');}
+document.addEventListener('pointerdown',e=>{
+  const chip=e.target.closest('.chip');if(!chip||submitted||e.button>0)return;
+  e.preventDefault();
+  drag={chip,sx:e.clientX,sy:e.clientY,moved:false,ghost:null,dx:0,dy:0};});
+document.addEventListener('pointermove',e=>{
+  if(!drag)return;
+  if(!drag.moved){if(Math.hypot(e.clientX-drag.sx,e.clientY-drag.sy)<6)return;
+    drag.moved=true;const r=drag.chip.getBoundingClientRect();
+    const g=drag.chip.cloneNode(true);g.classList.add('ghost');g.classList.remove('selected');g.style.width=r.width+'px';g.style.height=r.height+'px';
+    document.body.appendChild(g);drag.ghost=g;drag.dx=drag.sx-r.left;drag.dy=drag.sy-r.top;drag.chip.classList.add('dragging');select(null);}
+  drag.ghost.style.left=(e.clientX-drag.dx)+'px';drag.ghost.style.top=(e.clientY-drag.dy)+'px';
+  setHover(zoneAt(e.clientX,e.clientY,drag.chip));
+  if(e.clientY<70)window.scrollBy(0,-14);else if(e.clientY>innerHeight-70)window.scrollBy(0,14);});
+function endDrag(e){
+  if(!drag)return;const d=drag;drag=null;
+  if(d.moved){const z=zoneAt(e.clientX,e.clientY,d.chip);d.ghost.remove();d.chip.classList.remove('dragging');setHover(null);if(z)place(d.chip,z);}
+  else{select(selected===d.chip?null:d.chip);}}
+document.addEventListener('pointerup',endDrag);
+document.addEventListener('pointercancel',e=>{if(drag){if(drag.ghost)drag.ghost.remove();drag.chip.classList.remove('dragging');setHover(null);drag=null;}});
+document.addEventListener('click',e=>{if(submitted||e.target.closest('.chip'))return;const z=e.target.closest('.zone');
+  if(z&&selected)place(selected,z);});
+$$('.chip').forEach(c=>{c.tabIndex=0;c.setAttribute('role','button');});
+$$('.zone').forEach(z=>{z.tabIndex=0;});
+document.addEventListener('keydown',e=>{if(submitted||(e.key!=='Enter'&&e.key!==' '))return;
+  const c=e.target.closest&&e.target.closest('.chip');if(c){e.preventDefault();select(selected===c?null:c);return;}
+  const z=e.target.closest&&e.target.closest('.zone');if(z&&selected){e.preventDefault();place(selected,z);}});
+
+/* ---------- Matching (tap a term, then tap its partner) ---------- */
+const colors=['#2F54C9','#D2691E','#1D7A46','#8E3FC1','#C0315A','#0B7A83'];
+$$('.q[data-type=match]').forEach(q=>{
+  let active=null;
+  $$('.mleft',q).forEach((b,i)=>{b.dataset.i=i;b.querySelector('.tag').style.background=colors[i];b.querySelector('.tag').textContent=i+1;});
+  function unpair(l){const r=$$('.mright',q).find(x=>x.dataset.by===l.dataset.id);if(r){delete r.dataset.by;r.classList.remove('paired');const t=r.querySelector('.tag');t.style.background='';t.textContent='';}delete l.dataset.pair;l.classList.remove('paired');}
+  q.addEventListener('click',e=>{if(submitted)return;const b=e.target.closest('.mitem');if(!b)return;
+    if(b.classList.contains('mleft')){if(b.dataset.pair)unpair(b);if(active)active.classList.remove('active');active=(active===b)?null:b;if(active)active.classList.add('active');updateProgress();return;}
+    if(!active){toast('Tap a level on the left first, then its description.');return;}
+    if(b.dataset.by){const prev=$$('.mleft',q).find(l=>l.dataset.id===b.dataset.by);if(prev)unpair(prev);}
+    active.dataset.pair=b.dataset.id;active.classList.add('paired');b.dataset.by=active.dataset.id;b.classList.add('paired');
+    const t=b.querySelector('.tag');t.style.background=colors[+active.dataset.i];t.textContent=+active.dataset.i+1;
+    active.classList.remove('active');active=null;updateProgress();});});
+
+/* ---------- Submit & mark ---------- */
+function mark(){
+  const sections={};let got=0,max=0,teacher=0;
+  $$('.q').forEach(q=>{let g=0,m=0;const t=q.dataset.type;
+    if(t==='text'){teacher++;}
+    else if(t==='mcq'||t==='yn'){m=1;const c=q.querySelector('input:checked');const ok=c&&c.value===q.dataset.answer;if(ok)g=1;
+      $$('.opt,.ynb',q).forEach(l=>{const v=l.querySelector('input').value;if(v===q.dataset.answer&&t==='mcq')l.classList.add('is-right');if(l.classList.contains('sel')&&!ok)l.classList.add('is-wrong');if(l.classList.contains('sel')&&ok)l.classList.add('is-right');});
+      if(t==='yn')q.classList.add(ok?'row-right':'row-wrong');}
+    else if(t==='dd'){$$('.chip',q).forEach(c=>{const z=c.closest('.zone');const inTray=!z||z.classList.contains('tray');
+        if(c.dataset.distractor!==undefined){if(!inTray)c.classList.add('wrong');return;}
+        m++;const ok=!inTray&&z.dataset.ans===c.dataset.ans;c.classList.add(ok?'right':'wrong');if(ok)g++;});}
+    else if(t==='match'){$$('.mleft',q).forEach(l=>{m++;const ok=l.dataset.pair===l.dataset.id;if(ok)g++;l.classList.add(ok?'right':'wrong');});}
+    else if(t==='pick'){m=1;const s=q.querySelector('.tile.sel');const ok=s&&s.dataset.v===q.dataset.answer;if(ok)g=1;if(s)s.classList.add(ok?'right':'wrong');}
+    const sec=q.closest('.section');const name=sec?sec.dataset.title:'Other';
+    if(m){sections[name]=sections[name]||[0,0];sections[name][0]+=g;sections[name][1]+=m;}
+    got+=g;max+=m;});
+  return {sections,got,max,teacher};}
+function submit(){
+  const miss=[];['#s-name','#s-sid','#s-grade'].forEach(s=>{const el=$(s);const bad=!el.value.trim();el.closest('.field').classList.toggle('missing',bad);if(bad)miss.push(el);});
+  if(miss.length){miss[0].scrollIntoView({block:'center',behavior:'smooth'});miss[0].focus({preventScroll:true});toast('Enter your name, SID and grade before submitting.');return false;}
+  const left=$$('.q').filter(q=>!answered(q)).length;
+  if(left&&!confirm(`You have ${left} unanswered question${left>1?'s':''}. Submit anyway?`))return false;
+  submitted=true;document.body.classList.add('locked');select(null);
+  $$('input,textarea').forEach(el=>el.disabled=true);$$('.mitem,.tile').forEach(b=>b.disabled=true);
+  const r=mark();lastResult=r;const res=$('#result');
+  const when=new Date().toLocaleString();submittedAt=when;
+  let html=`<h3>Submitted</h3><div>${esc($('#s-name').value)} &nbsp;|&nbsp; SID ${esc($('#s-sid').value)} &nbsp;|&nbsp; Grade ${esc($('#s-grade').value)}</div><div style="color:var(--muted);font-size:.88rem">${when}</div>`;
+  if(r.max){html+=`<table><tr><td><strong>Auto-marked score</strong></td><td>${r.got} / ${r.max}</td></tr>`;
+    for(const k in r.sections)html+=`<tr><td>${esc(k)}</td><td>${r.sections[k][0]} / ${r.sections[k][1]}</td></tr>`;html+='</table>';}
+  if(r.teacher)html+=`<p style="margin:12px 0 0">${r.teacher} written answer${r.teacher>1?'s':''} will be marked by your teacher.</p>`;
+  html+=`<p style="margin:10px 0 0">Your answers are now locked. Press <strong>Download PDF</strong> and hand the file to your teacher.</p>`;
+  res.innerHTML=html;res.classList.add('show');
+  $('#submit-btn').style.display='none';
+  res.scrollIntoView({behavior:'smooth',block:'center'});return true;}
+
+/* ---------- PDF report ---------- */
+const T=el=>el?el.textContent.replace(/\s+/g,' ').trim():'';
+function rowsFor(q){
+  const t=q.dataset.type,Q=q.dataset.q||'';
+  if(t==='text'){const v=q.querySelector('.txt').value.trim();return{q:Q,rows:[{a:v||'(no answer)',st:v?'typed':'blank'}]};}
+  if(t==='mcq'||t==='yn'){const c=q.querySelector('input:checked');if(!c)return{q:Q,rows:[{a:'(no answer)',st:'wrong'}]};
+    const a=t==='mcq'?c.value.toUpperCase()+'. '+T(c.closest('.opt').querySelector('span:last-child')):(c.value==='yes'?'Yes':'No');
+    return{q:Q,rows:[{a,st:c.value===q.dataset.answer?'right':'wrong'}]};}
+  if(t==='dd'){const rows=[];const slots=$$('.zone[data-cap]',q);
+    if(slots.length)slots.forEach(z=>{const c=z.querySelector('.chip');rows.push({l:z.dataset.label,a:c?T(c):'(empty)',st:c&&c.dataset.distractor===undefined&&c.dataset.ans===z.dataset.ans?'right':'wrong'});});
+    else $$('.chip:not([data-distractor])',q).forEach(c=>{const z=c.closest('.zone');const tray=z.classList.contains('tray');rows.push({l:T(c),a:tray?'(not placed)':z.dataset.label,st:!tray&&z.dataset.ans===c.dataset.ans?'right':'wrong'});});
+    return{q:Q,rows};}
+  if(t==='match')return{q:Q,rows:$$('.mleft',q).map(l=>{const r=l.dataset.pair?$$('.mright',q).find(x=>x.dataset.id===l.dataset.pair):null;return{l:l.dataset.label,a:r?r.dataset.label:'(not matched)',st:l.dataset.pair===l.dataset.id?'right':'wrong'};})};
+  if(t==='pick'){const s=q.querySelector('.tile.sel');return{q:Q,rows:[{a:s?T(s):'(no answer)',st:s&&s.dataset.v===q.dataset.answer?'right':'wrong'}]};}
+  return{q:Q,rows:[]};}
+function hexRgb(h){h=h.trim().replace('#','');return[0,2,4].map(i=>parseInt(h.substr(i,2),16));}
+function downloadPDF(){
+  if(!submitted&&!submit())return;
+  const J=window.jspdf&&window.jspdf.jsPDF;
+  if(!J){toast('The PDF tool needs an internet connection. Opening print instead; choose "Save as PDF".');setTimeout(()=>window.print(),600);return;}
+  const doc=new J({unit:'mm',format:'a4'});const W=210,H=297,M=16,CW=W-2*M,BOT=H-18;let y=0;
+  const INK=[26,34,51],MUT=[91,101,121],GRN=[29,122,70],RED=[191,58,48],ACC=hexRgb(getComputedStyle(document.documentElement).getPropertyValue('--accent'));
+  const clean=s=>String(s).replace(/[\u2018\u2019]/g,"'").replace(/[\u201C\u201D]/g,'"').replace(/[\u2013\u2014]/g,'-').replace(/\u2192/g,'->').replace(/&/g,'and').replace(/[^\x20-\x7E]/g,'');
+  const font=(sz,st,c)=>{doc.setFontSize(sz);doc.setFont('helvetica',st);doc.setTextColor(...c);};
+  const need=h=>{if(y+h>BOT){doc.addPage();y=18;}};
+  const title=document.querySelector('.hero h1').textContent.trim();
+  // header
+  doc.setFillColor(...INK);doc.rect(0,0,W,38,'F');
+  font(9,'normal',[174,184,204]);doc.text('Grade 10 Computer Science',M,12);
+  font(22,'bold',[255,255,255]);doc.text(title,M,24);
+  font(11,'normal',[227,232,242]);doc.text('Abstraction in Computing',M,32);
+  y=46;
+  // student details
+  doc.setFillColor(241,243,247);doc.roundedRect(M,y,CW,30,3,3,'F');
+  const cols=[['Name',$('#s-name').value],['SID',$('#s-sid').value],['Grade',$('#s-grade').value]],cx=[M+5,M+CW*0.55,M+CW*0.78];
+  cols.forEach(([k,v],i)=>{font(8,'normal',MUT);doc.text(k,cx[i],y+7);font(11,'bold',INK);doc.text(doc.splitTextToSize(clean(v),i?CW*0.2:CW*0.48)[0]||'',cx[i],y+13);});
+  font(8,'normal',MUT);doc.text('Submitted',cx[0],y+21);font(10,'normal',INK);doc.text(clean(submittedAt),cx[0],y+26.5);
+  if(lastResult&&lastResult.max){font(8,'normal',MUT);doc.text('Auto-marked score',cx[1],y+21);font(12,'bold',ACC);doc.text(`${lastResult.got} / ${lastResult.max}`,cx[1],y+26.5);}
+  y+=36;
+  // legend
+  let lx=M;const leg=(c,txt)=>{doc.setFillColor(...c);doc.circle(lx+1.5,y-1.2,1.5,'F');font(8.5,'normal',MUT);doc.text(txt,lx+5,y);lx+=doc.getTextWidth(txt)+12;};
+  const hasAuto=lastResult&&lastResult.max,hasTyped=$$('.q[data-type=text]').length;
+  if(hasAuto){leg(GRN,'Correct');leg(RED,'Incorrect');}
+  if(hasTyped)leg(INK,'Typed answer, marked by your teacher');
+  y+=8;
+  const LW=62;
+  $$('.section').forEach(sec=>{
+    need(20);y+=3;font(13,'bold',ACC);doc.text(clean(sec.dataset.title),M,y);y+=2.5;doc.setDrawColor(...ACC);doc.setLineWidth(.4);doc.line(M,y,M+CW,y);y+=6;
+    let grp=null;
+    $$('.q',sec).forEach(q=>{
+      const g=q.closest('[data-group]');const gt=g?g.dataset.group:null;
+      if(gt&&gt!==grp){grp=gt;need(16);y+=1;font(11,'bold',INK);doc.text(clean(gt),M,y);y+=6;}
+      const r=rowsFor(q);
+      font(10,'bold',INK);const ql=doc.splitTextToSize(clean(r.q),CW);need(ql.length*4.6+6);doc.text(ql,M,y);y+=ql.length*4.6+0.6;
+      r.rows.forEach(row=>{
+        const col=row.st==='right'?GRN:row.st==='wrong'?RED:row.st==='blank'?MUT:INK;
+        const tag=row.st==='right'?'Correct':row.st==='wrong'?'Incorrect':'';
+        const ax=row.l!==undefined?M+4+LW:M+4, aw=M+CW-ax-(tag?20:0);
+        font(9.5,'normal',INK);const ll=row.l!==undefined?doc.splitTextToSize(clean(row.l),LW-4):[];
+        font(9.5,row.st==='right'||row.st==='wrong'?'bold':'normal',col);const al=doc.splitTextToSize(clean(row.l===undefined&&row.st!=='typed'&&row.st!=='blank'?'Answer: '+row.a:row.a),aw);
+        const h=Math.max(ll.length,al.length)*4.3;need(h+1.5);
+        if(tag){doc.setFillColor(...col);doc.circle(M+1.3,y-1.2,1.1,'F');}
+        if(ll.length){font(9.5,'normal',MUT);doc.text(ll,M+4,y);}
+        font(9.5,row.st==='right'||row.st==='wrong'?'bold':'normal',col);doc.text(al,ax,y);
+        if(tag){font(8,'bold',col);doc.text(tag,M+CW,y,{align:'right'});}
+        y+=h+1.2;});
+      y+=3.5;});
+  });
+  const n=doc.getNumberOfPages();
+  for(let i=1;i<=n;i++){doc.setPage(i);font(8,'normal',MUT);doc.text(clean(`${title}  |  ${$('#s-name').value}  |  SID ${$('#s-sid').value}`),M,H-9);doc.text(`Page ${i} of ${n}`,W-M,H-9,{align:'right'});}
+  const safe=v=>clean(v).replace(/[^A-Za-z0-9]+/g,'_').replace(/^_|_$/g,'');
+  doc.save(`${title.replace(/\s+/g,'_')}_${safe($('#s-name').value)||'Student'}_${safe($('#s-sid').value)}.pdf`);
+  toast('PDF downloaded.');}
+
+function esc(s){return s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+$('#submit-btn').addEventListener('click',submit);
+$('#pdf-btn').addEventListener('click',downloadPDF);
+window.addEventListener('beforeunload',e=>{if(!submitted&&$$('.q').some(answered)){e.preventDefault();e.returnValue='';}});
+updateProgress();
+})();
+</script></body></html>

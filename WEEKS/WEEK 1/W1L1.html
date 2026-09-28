@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CLASSWORK 1 — Abstraction in Computing</title><style>
+:root{
+  --navy:#102a43; --blue:#1769aa; --cyan:#2d9cdb; --light:#f4f8fc;
+  --green:#1f8a70; --orange:#f2994a; --red:#d64545; --text:#243b53;
+  --border:#d9e2ec; --white:#fff; --shadow:0 10px 30px rgba(16,42,67,.10);
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(135deg,#eef5fb,#ffffff 45%,#f5f9fd);
+font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--text);line-height:1.5}
+.page{max-width:1180px;margin:auto;padding:28px 22px 70px}
+.hero{background:linear-gradient(135deg,var(--navy),#155e91);color:white;border-radius:22px;padding:28px 30px;
+box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:240px;height:240px;border:35px solid rgba(255,255,255,.07);
+border-radius:50%;right:-80px;top:-100px}
+.kicker{font-size:13px;letter-spacing:2px;text-transform:uppercase;opacity:.8;font-weight:800}
+h1{margin:5px 0 4px;font-size:34px;letter-spacing:.5px}
+.subtitle{margin:0;opacity:.88}
+.student{background:white;border:1px solid var(--border);border-radius:18px;padding:18px 20px;margin:20px 0;
+box-shadow:var(--shadow);display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:14px}
+.field label{display:block;font-weight:800;font-size:13px;margin-bottom:6px}
+.field input,.short,.textanswer{width:100%;border:2px solid var(--border);border-radius:10px;padding:11px 12px;
+font-size:15px;background:#fbfdff;outline:none}
+.field input:focus,.short:focus,.textanswer:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(45,156,219,.12)}
+.instructions{background:#fff8e9;border-left:5px solid var(--orange);padding:13px 16px;border-radius:10px;margin:18px 0}
+.card{background:white;border:1px solid var(--border);border-radius:18px;padding:22px;margin:18px 0;box-shadow:var(--shadow)}
+.card h2{margin:0 0 7px;color:var(--navy);font-size:22px}
+.card h3{color:var(--blue);margin-top:0}
+.tag{display:inline-block;background:#e8f3fb;color:var(--blue);padding:4px 9px;border-radius:999px;font-size:12px;font-weight:800}
+.scenario{background:linear-gradient(180deg,#fbfdff,#fff);border:1px solid var(--border);border-radius:14px;padding:17px;margin:14px 0}
+.scenario p{margin:7px 0}
+.q{margin:12px 0}
+.q b{display:block;margin-bottom:5px}
+.options label{display:block;padding:8px 10px;margin:5px 0;border:1px solid #e4ebf2;border-radius:9px;cursor:pointer}
+.options label:hover{background:#f5faff}
+.table-wrap{overflow:auto}
+table{border-collapse:collapse;width:100%;min-width:650px}
+th,td{border:1px solid var(--border);padding:11px;text-align:left;vertical-align:middle}
+th{background:#eaf3fa;color:var(--navy);font-weight:800}
+.actionbar{position:sticky;bottom:0;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);
+border-top:1px solid var(--border);padding:13px;display:flex;justify-content:center;gap:10px;z-index:20}
+button{border:0;border-radius:11px;padding:12px 18px;font-weight:800;cursor:pointer;font-size:14px}
+.primary{background:var(--navy);color:white}.secondary{background:#e9f4fb;color:var(--blue)}
+button:hover{transform:translateY(-1px)}
+.feedback{margin-top:8px;font-size:13px;color:#66788a}
+.drag-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.pool{display:flex;flex-wrap:wrap;gap:9px;padding:14px;background:#f5f9fc;border-radius:12px;min-height:70px}
+.draggable{background:white;border:2px solid #b8d4e8;padding:9px 12px;border-radius:9px;cursor:grab;font-weight:700}
+.dropzone{min-height:48px;border:2px dashed #a9c4d8;border-radius:10px;padding:10px;background:#fbfdff}
+.dropzone.over{background:#edf8ff;border-color:var(--cyan)}
+.match-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:center;margin:9px 0}
+.match-row select{padding:10px;border:2px solid var(--border);border-radius:9px}
+.steps{counter-reset:step;display:grid;gap:9px}
+.step{counter-increment:step;background:#f6f9fc;border:1px solid var(--border);padding:12px 14px;border-radius:10px}
+.step:before{content:counter(step);display:inline-grid;place-items:center;width:27px;height:27px;border-radius:50%;
+background:var(--blue);color:white;font-weight:900;margin-right:9px}
+.flow-area{position:relative;min-height:330px;border:2px dashed #b9ccda;border-radius:16px;background:#fbfdff;padding:15px}
+.shape-palette{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:12px}
+.shape{padding:9px 12px;border:2px solid #b8d4e8;background:white;cursor:grab;font-weight:800}
+.flow-drop{display:flex;flex-wrap:wrap;gap:12px;align-items:center;min-height:210px;justify-content:center}
+.flow-item{min-width:120px;text-align:center;padding:12px;border:3px solid var(--blue);background:#eef7fd;font-weight:800}
+.flow-item.process{border-radius:6px}.flow-item.decision{border-radius:4px;transform:rotate(0deg);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+.flow-item.startend{border-radius:30px}.flow-item.input{clip-path:polygon(10% 0,100% 0,90% 100%,0 100%)}
+.small-note{font-size:12px;color:#6b7c8f}
+.checklist label{display:block;margin:8px 0}
+@media(max-width:760px){.student,.drag-grid{grid-template-columns:1fr}.hero h1{font-size:27px}}
+@media print{
+ body{background:white}.actionbar{display:none}.page{padding:0}.hero{box-shadow:none}.card,.student{box-shadow:none}
+}
+</style></head>
+<body><main class="page">
+<header class="hero"><div class="kicker">GRADE 10 • COMPUTER SCIENCE</div><h1>CLASSWORK 1</h1><p class="subtitle">Abstraction in Computing • Scenario Short Answers</p></header>
+<section class="student"><div class="field"><label>Enter Name</label><input id="studentName" type="text"></div><div class="field"><label>Enter SID</label><input id="studentSID" type="text"></div><div class="field"><label>Enter Grade</label><input id="studentGrade" type="text"></div></section>
+<div class="instructions"><b>Instructions:</b> Read each easy scenario and answer the five questions. Type your answers. Pasting is disabled in the answer boxes.</div>
+<div class="scenario"><h3>1. Sending an Email</h3><p>A student opens an email app and writes a message. The student enters the recipient and clicks Send. The simple screen shows only the controls needed to send the message. Protocols, servers, and networking work behind the interface. The student does not need to understand those hidden processes. This is abstraction because unnecessary detail is hidden. The visible controls form the interface. The hidden networking is part of the implementation.</p><div class="q"><b>1. What computing concept is illustrated?</b><input class="short" type="text" data-q="Scenario 1 Q1" placeholder="Type your short answer..."></div><div class="q"><b>2. What does the student see and use?</b><input class="short" type="text" data-q="Scenario 1 Q2" placeholder="Type your short answer..."></div><div class="q"><b>3. Name one hidden detail.</b><input class="short" type="text" data-q="Scenario 1 Q3" placeholder="Type your short answer..."></div><div class="q"><b>4. What is the hidden detail called in abstraction?</b><input class="short" type="text" data-q="Scenario 1 Q4" placeholder="Type your short answer..."></div><div class="q"><b>5. Why does the student not need to understand the hidden processes?</b><input class="short" type="text" data-q="Scenario 1 Q5" placeholder="Type your short answer..."></div></div><div class="scenario"><h3>2. Using a Photo-Editing App</h3><p>A student opens a photo-editing app. The student selects a picture and chooses a tool. The app provides a simple visible interface. Complex code and lower-level computer operations happen underneath. The student does not see those operations. The interface shows the essential information needed to use the app. The hidden workings are the implementation. This is an example of abstraction at the application level.</p><div class="q"><b>1. What level is the photo-editing app?</b><input class="short" type="text" data-q="Scenario 2 Q1" placeholder="Type your short answer..."></div><div class="q"><b>2. What does the app provide to the user?</b><input class="short" type="text" data-q="Scenario 2 Q2" placeholder="Type your short answer..."></div><div class="q"><b>3. What is hidden from the user?</b><input class="short" type="text" data-q="Scenario 2 Q3" placeholder="Type your short answer..."></div><div class="q"><b>4. What is the hidden inner working called?</b><input class="short" type="text" data-q="Scenario 2 Q4" placeholder="Type your short answer..."></div><div class="q"><b>5. Why is the simple interface useful?</b><input class="short" type="text" data-q="Scenario 2 Q5" placeholder="Type your short answer..."></div></div><div class="scenario"><h3>3. A Washing Machine</h3><p>A person selects Cotton, Delicate, Spin, or Start. The person does not control every internal process. Water-level sensors operate behind the controls. Heating elements and motor control are also hidden. Drainage timing and safety locks work in the background. The control panel is the visible interface. The hidden processes are implementation details. The user only chooses a programme and starts the machine.</p><div class="q"><b>1. What is the visible interface?</b><input class="short" type="text" data-q="Scenario 3 Q1" placeholder="Type your short answer..."></div><div class="q"><b>2. Name one hidden process.</b><input class="short" type="text" data-q="Scenario 3 Q2" placeholder="Type your short answer..."></div><div class="q"><b>3. What concept hides these details?</b><input class="short" type="text" data-q="Scenario 3 Q3" placeholder="Type your short answer..."></div><div class="q"><b>4. Why does the user not need to control each process?</b><input class="short" type="text" data-q="Scenario 3 Q4" placeholder="Type your short answer..."></div><div class="q"><b>5. What is the hidden implementation behind the interface?</b><input class="short" type="text" data-q="Scenario 3 Q5" placeholder="Type your short answer..."></div></div><div class="scenario"><h3>4. Using a Smartphone App</h3><p>A user taps an app icon. The app shows a simple screen. Code can request data from a server. A server can query a database. Network protocols move the data. The user mainly sees the app interface. The lower-level work is hidden. Abstraction allows the user to use the app without knowing all the hidden steps.</p><div class="q"><b>1. What does the user tap?</b><input class="short" type="text" data-q="Scenario 4 Q1" placeholder="Type your short answer..."></div><div class="q"><b>2. What does the user see?</b><input class="short" type="text" data-q="Scenario 4 Q2" placeholder="Type your short answer..."></div><div class="q"><b>3. Name one hidden component.</b><input class="short" type="text" data-q="Scenario 4 Q3" placeholder="Type your short answer..."></div><div class="q"><b>4. Which system can query a database?</b><input class="short" type="text" data-q="Scenario 4 Q4" placeholder="Type your short answer..."></div><div class="q"><b>5. Why is this an example of abstraction?</b><input class="short" type="text" data-q="Scenario 4 Q5" placeholder="Type your short answer..."></div></div><div class="scenario"><h3>5. Python Programming</h3><p>A programmer writes code using Python. Python is a high-level programming language. The programmer does not normally work directly with transistors and circuits. Lower levels handle machine instructions and hardware operations. The programming language level hides many lower-level details. This lets the programmer focus on solving the problem. The lower layers still perform the required work. Using a higher level is an example of abstraction.</p><div class="q"><b>1. Which programming language is used in the scenario?</b><input class="short" type="text" data-q="Scenario 5 Q1" placeholder="Type your short answer..."></div><div class="q"><b>2. At which abstraction level does the programmer mainly work?</b><input class="short" type="text" data-q="Scenario 5 Q2" placeholder="Type your short answer..."></div><div class="q"><b>3. What lower-level detail is hidden?</b><input class="short" type="text" data-q="Scenario 5 Q3" placeholder="Type your short answer..."></div><div class="q"><b>4. Name one lower level.</b><input class="short" type="text" data-q="Scenario 5 Q4" placeholder="Type your short answer..."></div><div class="q"><b>5. Why is hiding lower-level detail useful?</b><input class="short" type="text" data-q="Scenario 5 Q5" placeholder="Type your short answer..."></div></div><div class="scenario"><h3>6. Computer Layers</h3><p>A computer system can be viewed as several abstraction levels. The application level is closest to the user. Below it is the programming language level. The operating system manages memory, files, and processes. The machine or assembly level contains processor instructions. The hardware level contains transistors, circuits, and logic gates. Each layer hides details of the layer below. This makes the overall system easier to manage.</p><div class="q"><b>1. Which level is closest to the user?</b><input class="short" type="text" data-q="Scenario 6 Q1" placeholder="Type your short answer..."></div><div class="q"><b>2. What level contains high-level code such as Python?</b><input class="short" type="text" data-q="Scenario 6 Q2" placeholder="Type your short answer..."></div><div class="q"><b>3. What does the operating system manage?</b><input class="short" type="text" data-q="Scenario 6 Q3" placeholder="Type your short answer..."></div><div class="q"><b>4. What does the machine level contain?</b><input class="short" type="text" data-q="Scenario 6 Q4" placeholder="Type your short answer..."></div><div class="q"><b>5. What does the hardware level contain?</b><input class="short" type="text" data-q="Scenario 6 Q5" placeholder="Type your short answer..."></div></div><div class="scenario"><h3>7. Replacing an Operating System</h3><p>A computer has applications running above an operating system. The operating system forms a separate abstraction layer. An operating system can be replaced without rebuilding every application. The layer above can continue to use the services it needs. This demonstrates modularity and reuse. Developers can focus on their own layer. The layers reduce the need to understand the whole system. This makes systems easier to maintain.</p><div class="q"><b>1. Which layer is being replaced?</b><input class="short" type="text" data-q="Scenario 7 Q1" placeholder="Type your short answer..."></div><div class="q"><b>2. What can continue to work above it?</b><input class="short" type="text" data-q="Scenario 7 Q2" placeholder="Type your short answer..."></div><div class="q"><b>3. What benefit of abstraction is shown?</b><input class="short" type="text" data-q="Scenario 7 Q3" placeholder="Type your short answer..."></div><div class="q"><b>4. What does modularity allow?</b><input class="short" type="text" data-q="Scenario 7 Q4" placeholder="Type your short answer..."></div><div class="q"><b>5. Why can developers focus on their own layer?</b><input class="short" type="text" data-q="Scenario 7 Q5" placeholder="Type your short answer..."></div></div><div class="scenario"><h3>8. Fixing a Bug in One Layer</h3><p>A computing system is divided into abstraction layers. A problem occurs in one layer. Developers can investigate that layer without changing every other layer. The other layers can continue to provide their services. This can make maintenance easier. Different specialists can focus on different layers. Abstraction keeps the system manageable. The layers hide unnecessary complexity from each specialist.</p><div class="q"><b>1. What is the system divided into?</b><input class="short" type="text" data-q="Scenario 8 Q1" placeholder="Type your short answer..."></div><div class="q"><b>2. What can developers investigate?</b><input class="short" type="text" data-q="Scenario 8 Q2" placeholder="Type your short answer..."></div><div class="q"><b>3. What can the other layers continue to do?</b><input class="short" type="text" data-q="Scenario 8 Q3" placeholder="Type your short answer..."></div><div class="q"><b>4. Which benefit of abstraction is shown?</b><input class="short" type="text" data-q="Scenario 8 Q4" placeholder="Type your short answer..."></div><div class="q"><b>5. Why is the system easier to manage?</b><input class="short" type="text" data-q="Scenario 8 Q5" placeholder="Type your short answer..."></div></div>
+</main><div class="actionbar"><button id="pdfBtn" class="primary" onclick="downloadPDF()">⬇ Download Answered PDF</button><button class="secondary" onclick="window.print()">🖨 Print</button></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script><script>
+function lockPaste(el){
+  ['paste','drop'].forEach(ev=>el.addEventListener(ev,e=>e.preventDefault()));
+  el.addEventListener('keydown',e=>{
+    if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='v') e.preventDefault();
+  });
+  el.addEventListener('contextmenu',e=>e.preventDefault());
+}
+document.querySelectorAll('input[type=text], textarea').forEach(lockPaste);
+
+function val(id){return (document.getElementById(id)?.value||'').trim()||'—'}
+function studentInfo(){
+ return `Name: ${val('studentName')}    SID: ${val('studentSID')}    Grade: ${val('studentGrade')}`;
+}
+function safe(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+
+async function downloadPDF(){
+ const btn=document.getElementById('pdfBtn');
+ btn.disabled=true; btn.textContent='Preparing PDF...';
+ try{
+   const {jsPDF}=window.jspdf;
+   const canvas=await html2canvas(document.querySelector('.page'),{scale:1.5,backgroundColor:'#ffffff',useCORS:true});
+   const img=canvas.toDataURL('image/jpeg',0.92);
+   const pdf=new jsPDF('p','mm','a4');
+   const pw=210, ph=297, margin=8;
+   const iw=pw-margin*2, ih=canvas.height*iw/canvas.width;
+   const pageH=ph-margin*2;
+   const pages=Math.ceil(ih/pageH);
+   for(let p=0;p<pages;p++){
+     if(p>0) pdf.addPage();
+     const offset=margin-p*pageH;
+     pdf.addImage(img,'JPEG',margin,offset,iw,ih);
+   }
+   const filename=(document.querySelector('h1')?.textContent||'Classwork').replace(/[^a-z0-9]+/gi,'_')+'.pdf';
+   pdf.save(filename);
+ }catch(e){
+   alert('PDF library could not load. Use the browser Print dialog and choose “Save as PDF”.');
+   window.print();
+ }finally{btn.disabled=false;btn.textContent='⬇ Download Answered PDF';}
+}
+</script></body></html>

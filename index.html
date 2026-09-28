@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Al-Rowad International Schools | Computer Science LMS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /*
+      Positions use vh because bg.png is scaled to the screen height,
+      so 1vh always equals 1% of the image height on desktop screens.
+    */
+    :root {
+      --top: 18vh;              /* cards start just below the header */
+      --side-margin: 30px;      /* left & right edge margin */
+      --gap: 14px;              /* space between the cards */
+      --flip-h: calc(clamp(140px, 19vh, 230px) - 20px);  /* height of each flip card */
+
+      /* Colours taken from bg.png */
+      --navy-deep: #061a45;
+      --navy: #0b2e6e;
+      --royal: #1565d8;
+      --cyan: #22c3f0;
+      --white: #ffffff;
+      --ice: #eaf6fd;
+      --error: #d93a3a;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      font-family: "Barlow", "Segoe UI", Arial, sans-serif;
+      background: var(--navy-deep) url("Images/bg.png") center bottom / cover no-repeat;
+      overflow-x: hidden;
+    }
+
+    .content {
+      padding: var(--top) var(--side-margin) 0;
+    }
+
+    /* ===== 2 rows x 6 cards (same position, half the original card width) ===== */
+    .card-row {
+      display: grid;
+      grid-template-columns: repeat(6, calc((100% - 2 * var(--gap)) / 8));
+      justify-content: center;
+      column-gap: var(--gap);
+      row-gap: 8px;             /* same vertical spacing as the original stacked cards */
+      align-items: start;
+    }
+
+    /* ===== Flip card ===== */
+    .flip {
+      perspective: 1000px;
+      height: var(--flip-h);
+      outline: none;
+      container-type: inline-size;
+      box-shadow: 9px 9px 18px #000d24,
+                 -9px -9px 18px #023590;
+    }
+
+    .flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+
+    .flip:hover .flip-inner,
+    .flip:focus-within .flip-inner,
+    .flip.flipped .flip-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; border-radius: 12px; }
+
+    .face {
+      position: absolute;
+      inset: 0;
+      border-radius: 10px;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 12px;
+      overflow: hidden;
+    }
+
+    .front {
+      color: var(--white);
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .front > * { position: relative; }
+
+    .tag {
+      font-family: "Oswald", sans-serif;
+      font-weight: 500;
+      font-size: clamp(0.95rem, 2.1vh, 1.25rem);
+      letter-spacing: 3px;
+      color: var(--cyan);
+      padding: 2px 14px;
+      border-radius: 4px;
+      margin: 1vh 0;
+    }
+
+    .grade {
+      font-family: "Oswald", sans-serif;
+      font-weight: 600;
+      font-size: clamp(1rem, min(3.2vh, 9cqi), 1.9rem);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      line-height: 1.1;
+      margin: 0;
+      color: white;
+    }
+
+    .subject {
+      font-family: "Oswald", sans-serif;
+      font-weight: 600;
+      font-size: clamp(1rem, min(3.2vh, 9cqi), 1.9rem);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 0.3vh 0 0;
+      line-height: 1.1;
+      color: white;
+    }
+
+    .back {
+      transform: rotateY(180deg);
+      background: linear-gradient(160deg, var(--white) 0%, var(--ice) 100%);
+      color: var(--navy);
+      border: 2px solid var(--cyan);
+    }
+
+    .back .grade,
+    .back .subject { color: var(--royal); }
+
+    .btn {
+      margin-top: 1.4vh;
+      font-family: "Oswald", sans-serif;
+      font-weight: 500;
+      font-size: clamp(0.85rem, 1.8vh, 1.05rem);
+      letter-spacing: 1px;
+      text-decoration: none;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--royal), var(--navy));
+      padding: 0.9vh 26px;
+      border-radius: 6px;
+      box-shadow: 0 6px 16px rgba(21, 101, 216, 0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(21, 101, 216, 0.45); }
+    .btn:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
+
+    /* 4 compact buttons so they fit the original card height */
+    .back { padding: 6px; justify-content: space-evenly; }
+    .back .btn {
+      width: 92%;
+      margin: 0;
+      padding: 0.3vh 4px;
+      border: 0;
+      cursor: pointer;
+      font-size: clamp(0.7rem, min(1.5vh, 9cqi), 0.95rem);
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      box-shadow: 0 3px 8px rgba(21, 101, 216, 0.35);
+    }
+
+    /* ===================== LMS VIEWER (iframe) ===================== */
+    .lms-frame {
+      display: none;
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      z-index: 100;
+      background: var(--white);
+    }
+
+    .lms-back {
+      display: none;
+      position: fixed;
+      left: 14px;
+      bottom: 14px;
+      z-index: 101;
+      font-family: "Oswald", sans-serif;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      color: var(--white);
+      background: rgba(11, 46, 110, 0.85);
+      border: 1px solid var(--cyan);
+      border-radius: 30px;
+      padding: 8px 16px;
+      cursor: pointer;
+      opacity: 0.55;
+      transition: opacity 0.2s;
+    }
+    .lms-back:hover, .lms-back:focus-visible { opacity: 1; outline: none; }
+
+    body.lms-open { overflow: hidden; }
+    body.lms-open .content { display: none; }
+    body.lms-open .lms-frame,
+    body.lms-open .lms-back { display: block; }
+
+    /* No x/y scrolling on desktop */
+    @media (min-width: 901px) {
+      body { overflow: hidden; }
+    }
+
+    /* ===== Tablets & phones ===== */
+    @media (max-width: 900px) {
+      body { background-size: auto 100vh; background-attachment: scroll; }
+      .content { padding: 20vh 20px 40vh; }
+      .card-row { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+      :root { --flip-h: 130px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .flip-inner, .btn { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="content">
+    <div class="card-row" id="cardRow"></div>
+  </main>
+
+  <!-- ===== LMS viewer ===== -->
+  <iframe class="lms-frame" id="lmsFrame" title="LMS" allowfullscreen></iframe>
+  <button type="button" class="lms-back" id="lmsBack">&larr; Back to courses</button>
+
+  <script>
+    /* ===== Card settings ===== */
+    const START_WEEK = 6;                 // first card shows WEEK 6
+    const CARD_COUNT = 12;                // 2 rows x 6
+    const GRADE      = "Grade 10";
+    const SUBJECT    = "Computer Studies";
+
+    // Card 1 (WEEK 6) -> folder WEEKS/WEEK 1, card 2 (WEEK 7) -> WEEKS/WEEK 2, ...
+    function labsFor(index, week) {
+      const n = index + 1;
+      const dir = "WEEKS/WEEK " + n + "/";
+      return [
+        { label: "WK-" + week + "-LAB-1", src: dir + "W" + n + "L1.html" },
+        { label: "WK-" + week + "-LAB-2", src: dir + "W" + n + "L2.html" },
+        { label: "WK-" + week + "-LAB-3", src: dir + "W" + n + "L3.html" },
+        { label: "WK-" + week + "-HW",    src: dir + "W" + n + "HW.html" }
+      ];
+    }
+
+    const row   = document.getElementById("cardRow");
+    const frame = document.getElementById("lmsFrame");
+    const backBtn = document.getElementById("lmsBack");
+
+    // Build the 12 flip cards
+    for (let i = 0; i < CARD_COUNT; i++) {
+      const week = START_WEEK + i;
+      const buttons = labsFor(i, week).map(function (lab) {
+        return '<button type="button" class="btn" data-src="' + lab.src + '" data-title="' +
+               lab.label + '">' + lab.label + '</button>';
+      }).join("");
+
+      row.insertAdjacentHTML("beforeend",
+        '<div class="flip" tabindex="0" aria-label="Week ' + week + ' ' + GRADE + ' ' + SUBJECT + '">' +
+          '<div class="flip-inner">' +
+            '<div class="face front">' +
+              '<span class="tag">WEEK ' + week + '</span>' +
+              '<p class="grade">' + GRADE + '</p>' +
+              '<h3 class="subject">' + SUBJECT + '</h3>' +
+            '</div>' +
+            '<div class="face back">' + buttons + '</div>' +
+          '</div>' +
+        '</div>');
+    }
+
+    // Touch screens have no hover, so tap to flip
+    document.querySelectorAll(".flip").forEach(function (card) {
+      card.addEventListener("click", function (e) {
+        if (e.target.closest(".btn")) return;
+        if (window.matchMedia("(hover: none)").matches) card.classList.toggle("flipped");
+      });
+    });
+
+    // Lab / HW buttons -> load the page in the full-window iframe
+    row.addEventListener("click", function (e) {
+      const btn = e.target.closest(".back .btn");
+      if (!btn) return;
+      openLms(btn.dataset.src, btn.dataset.title);
+    });
+
+    // Remove the loaded page's own body margins (works when served from the same site)
+    frame.addEventListener("load", function () {
+      try {
+        const doc = frame.contentDocument;
+        if (doc && doc.body) {
+          doc.documentElement.style.margin = "0";
+          doc.body.style.margin = "0";
+        }
+      } catch (err) { /* different origin: leave as is */ }
+    });
+
+    function openLms(url, title) {
+      frame.src = url;
+      frame.title = title;
+      document.body.classList.add("lms-open");
+      history.pushState({ lms: true }, "");   // browser Back returns to the cards
+    }
+
+    function closeLms() {
+      document.body.classList.remove("lms-open");
+      frame.src = "about:blank";
+      if (document.activeElement) document.activeElement.blur();  // let the card flip back
+    }
+
+    backBtn.addEventListener("click", function () { history.back(); });
+    window.addEventListener("popstate", closeLms);
+  </script>
+
+</body>
+</html>
