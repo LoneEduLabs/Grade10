@@ -101,9 +101,6 @@ html.wk-on .book::after,html.wk-on .guide::after,html.wk-on .work::before{displa
 html.wk-on .grid{grid-template-rows:none;grid-auto-rows:220px;padding:12px}
 html.wk-on .work .grid{padding:12px}
 html.wk-on .page{overflow:visible}}
-html.wk-on .data-bar{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);z-index:200;display:flex;align-items:center;gap:12px;flex-wrap:wrap;max-width:min(760px,92vw);background:#1C2A36;color:#fff;padding:12px 16px;border-radius:14px;font:500 .84rem 'Lexend',sans-serif;box-shadow:0 18px 40px -16px rgba(0,0,0,.6)}
-html.wk-on .data-bar button{border:none;border-radius:9px;padding:7px 14px;font:600 .82rem 'Lexend',sans-serif;background:#FFD54F;color:#5A3E00;cursor:pointer}
-html.wk-on .data-bar input{display:none}
 /* ===== Lab view (active when <html class="lab-on">), built from labs.json ===== */
 html.lab-on{--ink:#1C2A36;--muted:#5C6B78;--line:#DCE3E8;--paper:#FFFDF8;--paper2:#FFFFFF;
 --accent:#1E6A8D;--accent-deep:#154A63;--accent-soft:#E3F0F6;--ok:#1D7A46;--ok-bg:#E3F3E9;--bad:#BF3A30;--bad-bg:#FBE8E6;--amber:#B47300;--grid:#EEF2F4}
@@ -566,172 +563,6 @@ html.lab-on .fwrap .fside .legend.side{font-size:.68rem;padding:6px 8px;gap:5px}
 html.lab-on .nbtn.home{background:var(--accent-deep);border-color:var(--accent-deep);color:#fff;font-weight:700;letter-spacing:.04em;display:inline-flex;align-items:center;gap:6px;box-shadow:0 2px 0 #0E3446}
 html.lab-on .nbtn.home:hover{filter:brightness(1.15)}
 html.lab-on .nbtn.home:active{transform:translateY(1px);box-shadow:none}
-/* ===== Project (PBL) view (active when <html class="lab-on pbl-on">), built from PROJECTPBL.json ===== */
-html.pbl-on .deck{padding-top:12px}
-html.pbl-on .snav-head{font:600 .72rem 'Lexend',sans-serif;color:var(--muted);margin:0 0 -4px 2px}
-html.pbl-on .snav{display:grid;gap:5px;flex:none}
-html.pbl-on .snav-item{display:flex;align-items:center;gap:10px;text-align:left;border:1.5px solid #E3E8EC;background:#fff;border-radius:12px;padding:6px 10px;cursor:pointer;font-family:'Lexend',sans-serif}
-html.pbl-on .snav-item .s-ico{font-size:1.15rem;width:32px;height:32px;display:grid;place-items:center;border-radius:9px;background:#F2F6F8;flex:none}
-html.pbl-on .snav-item .s-txt{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.25}
-html.pbl-on .snav-item b{font-size:.8rem;font-weight:600;color:var(--ink)}
-html.pbl-on .snav-item small{font-size:.68rem;color:var(--muted)}
-html.pbl-on .snav-item .s-st{width:20px;height:20px;border-radius:50%;border:2px solid #CBD5DD;flex:none;display:grid;place-items:center;font-size:.7rem;color:#fff}
-html.pbl-on .snav-item.ok .s-st{background:var(--ok);border-color:var(--ok)}
-html.pbl-on .snav-item.ok .s-st::after{content:'✓';font-weight:700}
-html.pbl-on .snav-item.cur{border-color:var(--accent);background:var(--accent-soft)}
-html.pbl-on .snav-item.cur .s-ico{background:#fff}
-html.pbl-on .gsec h3{font-size:1em}
-html.pbl-on .muted{color:var(--muted)}
-html.pbl-on .dates{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:.3em 0 .5em;font-family:'Lexend',sans-serif}
-html.pbl-on .dates div{border-radius:10px;padding:.45em .7em;background:#E9F6EC;border:1px solid #BFE3C8;display:flex;flex-direction:column}
-html.pbl-on .dates .dl{background:#FDECEA;border-color:#F3C3BD}
-html.pbl-on .dates small{font-size:.65em;color:var(--muted)}
-html.pbl-on .dates b{font-size:.95em}
-html.pbl-on .dates span{font-size:.7em;font-weight:600;color:var(--accent-deep)}
-html.pbl-on .datebar{display:flex;gap:8px;flex-wrap:wrap;margin:2px 0 4px}
-html.pbl-on .db{font:500 .74rem 'Lexend',sans-serif;border-radius:99px;padding:3px 11px;border:1px solid}
-html.pbl-on .db.s{background:#E9F6EC;border-color:#BFE3C8;color:#1B6B35}
-html.pbl-on .db.e{background:#FDECEA;border-color:#F3C3BD;color:#A52A1E}
-html.pbl-on .db.p{margin-left:auto;background:var(--accent-soft);border-color:#C7DFEB;color:var(--accent-deep)}
-html.pbl-on .date-hero{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-html.pbl-on .dh{flex:1;display:flex;gap:12px;align-items:center;border-radius:16px;padding:14px 16px;border:1.5px solid}
-html.pbl-on .dh>span{font-size:2rem}
-html.pbl-on .dh small{display:block;font-size:.74rem;color:var(--muted);font-weight:500}
-html.pbl-on .dh b{display:block;font-size:1.15rem;line-height:1.2}
-html.pbl-on .dh em{display:inline-block;font-style:normal;font-weight:700;font-size:.78rem;margin-top:3px;padding:1px 9px;border-radius:99px;color:#fff}
-html.pbl-on .dh.start{background:#EEF8F1;border-color:#BFE3C8}
-html.pbl-on .dh.start em{background:#2E8B57}
-html.pbl-on .dh.end{background:#FDF0EE;border-color:#F3C3BD}
-html.pbl-on .dh.end em{background:#C0392B}
-html.pbl-on .dh-line{display:flex;align-items:center;gap:4px;color:var(--muted);font-size:.72rem;font-weight:600;flex:none}
-html.pbl-on .dh-line i{width:16px;height:2px;background:#C5D2DC}
-html.pbl-on .todo{list-style:none;padding:0;margin:10px 0 0;display:grid;gap:8px}
-html.pbl-on .todo li{display:grid;grid-template-columns:34px 1fr;gap:2px 10px;align-items:start;font-size:.88rem;color:var(--muted)}
-html.pbl-on .todo li span{grid-row:span 2;font-size:1.2rem;width:34px;height:34px;display:grid;place-items:center;background:#F2F6F8;border-radius:9px}
-html.pbl-on .todo li b{color:var(--ink);font-size:.95rem}
-html.pbl-on .out-box{margin-top:12px;background:#E9F6EC;border:1px solid #BFE3C8;color:#1B6B35;border-radius:10px;padding:8px 12px;font-size:.9rem}
-html.pbl-on .field{margin-bottom:12px}
-html.pbl-on .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-html.pbl-on select.txt{appearance:auto;cursor:pointer}
-html.pbl-on .txt[readonly]{background:#F2F5F7;color:var(--muted)}
-html.pbl-on .proj-row{display:flex;gap:10px;align-items:stretch}
-html.pbl-on .proj-row select{flex:1.4;min-width:0}
-html.pbl-on .cat-badge{flex:1;display:flex;gap:9px;align-items:center;border:1.5px dashed #CBD6DE;border-radius:10px;padding:5px 10px;font:600 .86rem 'Lexend',sans-serif;color:var(--muted);min-width:0}
-html.pbl-on .cat-badge small{display:block;font-size:.66rem;font-weight:500;color:var(--muted)}
-html.pbl-on .cat-badge.on{border-style:solid;border-color:#BFE3C8;background:#E9F6EC;color:#1B6B35}
-html.pbl-on .cat-ico{font-size:1.4rem}
-html.pbl-on .proj-io{display:grid;grid-template-columns:1fr 1fr;gap:12px;border-top:1px solid #ECEFF2;padding-top:12px}
-html.pbl-on .proj-io h5{margin:0 0 6px;font-size:.78rem;color:var(--muted)}
-html.pbl-on .proj-io p{margin:0;display:flex;flex-wrap:wrap;gap:5px}
-html.pbl-on .io{font-size:.76rem;border-radius:99px;padding:2px 9px;border:1px solid}
-html.pbl-on .io.in{background:#EAF2FB;border-color:#C6DAF0;color:#1F4E87}
-html.pbl-on .io.out{background:#FFF4E2;border-color:#F2D7A6;color:#8A5A00}
-html.pbl-on .members{display:grid;gap:12px}
-html.pbl-on .mem label{display:flex;align-items:center;gap:8px}
-html.pbl-on .mem-n{width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:.75rem;font-weight:700}
-html.pbl-on .role-top{display:flex;gap:12px;align-items:flex-start;margin-bottom:10px}
-html.pbl-on .role-ico{font-size:1.6rem;width:46px;height:46px;border-radius:12px;background:#F2F6F8;display:grid;place-items:center;flex:none}
-html.pbl-on .role-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:12px}
-html.pbl-on .role-grid .field{margin:0}
-html.pbl-on .dup-msg{display:none;margin:8px 0 0;color:var(--bad);font-size:.82rem}
-html.pbl-on .role-card.dup{border-color:var(--bad)}
-html.pbl-on .role-card.dup .dup-msg{display:block}
-html.pbl-on .gantt-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
-html.pbl-on .g-legend{display:flex;gap:12px;font-size:.72rem;color:var(--muted);align-items:center}
-html.pbl-on .g-legend span{display:flex;gap:5px;align-items:center}
-html.pbl-on .lg-bar{width:22px;height:10px;border-radius:5px;background:linear-gradient(90deg,#1E6A8D,#2E8B57)}
-html.pbl-on .lg-today{width:14px;height:14px;border-radius:4px;background:#FFF6DF;border:1px solid #F0DCA4}
-html.pbl-on .gantt-wrap{overflow-x:auto;border:1px solid #DDE4EA;border-radius:14px}
-html.pbl-on .gantt{min-width:600px}
-html.pbl-on .g-row{display:grid;grid-template-columns:minmax(150px,1.5fr) minmax(110px,1fr) repeat(var(--wk,4),minmax(70px,1fr));border-bottom:1px solid #EDF1F4;align-items:stretch;position:relative}
-html.pbl-on .g-row:last-child{border-bottom:none}
-html.pbl-on .g-row>div{padding:7px 8px;display:flex;align-items:center}
-html.pbl-on .g-head{background:linear-gradient(#1F5878,#154A63);color:#fff}
-html.pbl-on .g-head>div{font:600 .76rem 'Lexend',sans-serif}
-html.pbl-on .g-week{flex-direction:column;align-items:center!important;justify-content:center;text-align:center;border-left:1px solid rgba(255,255,255,.18);line-height:1.2}
-html.pbl-on .g-week span{font-size:.62rem;font-weight:500;opacity:.85}
-html.pbl-on .g-week small{font-size:.62rem;font-weight:400;opacity:.8}
-html.pbl-on .g-week.today{background:rgba(255,214,102,.28)}
-html.pbl-on .g-ms{background:#FAFBFC}
-html.pbl-on .g-ms .g-task{font:600 .76rem 'Lexend',sans-serif;color:var(--muted);gap:6px}
-html.pbl-on .g-cell{border-left:1px solid #EDF1F4;padding:5px 0!important;justify-content:stretch}
-html.pbl-on .g-cell.today{background:#FFFAEB}
-html.pbl-on .g-cell.ms{justify-content:space-between;padding:4px 6px!important}
-html.pbl-on .ms{font:700 .64rem 'Lexend',sans-serif;border-radius:99px;padding:2px 7px;white-space:nowrap}
-html.pbl-on .ms.start{background:#E9F6EC;color:#1B6B35}
-html.pbl-on .ms.end{background:#FDECEA;color:#A52A1E;margin-left:auto}
-html.pbl-on .g-task{gap:8px}
-html.pbl-on .g-dot{width:10px;height:10px;border-radius:3px;background:var(--c);flex:none}
-html.pbl-on .g-tname{display:flex;flex-direction:column;line-height:1.25;min-width:0;flex:1;font-size:.84rem}
-html.pbl-on .g-tname small{font-size:.66rem;color:var(--muted)}
-html.pbl-on .g-tname .g-name{padding:5px 8px;font-size:.82rem}
-html.pbl-on .g-task:has(.g-del){position:relative}
-html.pbl-on .g-del{border:none;background:none;color:var(--muted);cursor:pointer;font-size:.8rem;padding:2px 4px}
-html.pbl-on .g-sel{padding:5px 8px;font-size:.8rem}
-html.pbl-on .g-bar{width:100%;height:30px;border:1.5px dashed #CFD9E1;background:transparent;border-radius:8px;margin:0 5px;cursor:pointer;font:600 .68rem 'Lexend',sans-serif;color:#fff;text-align:left;padding:0 8px;white-space:nowrap;overflow:visible;transition:background .15s}
-html.pbl-on .g-bar:hover{border-color:var(--c);background:color-mix(in srgb,var(--c) 12%,transparent)}
-html.pbl-on .g-bar.on{border:none;background:var(--c);border-radius:0;margin:0;box-shadow:inset 0 -3px 0 rgba(0,0,0,.15)}
-html.pbl-on .g-bar.on.l{border-top-left-radius:8px;border-bottom-left-radius:8px;margin-left:5px}
-html.pbl-on .g-bar.on.r{border-top-right-radius:8px;border-bottom-right-radius:8px;margin-right:5px}
-html.pbl-on .g-bar:disabled{cursor:default}
-html.pbl-on .add-btn{margin-top:10px;font-size:.84rem;padding:7px 14px;border:1.5px dashed var(--accent);color:var(--accent-deep);background:#fff}
-html.pbl-on .add-btn:disabled{opacity:.4}
-html.pbl-on .ttable{font-size:.86rem}
-html.pbl-on .ttable.kv td:first-child{width:38%;color:var(--muted);font-weight:500}
-html.pbl-on .miss{color:var(--bad);font-weight:600}
-html.pbl-on .ph-list{display:grid;gap:10px}
-html.pbl-on .ph-card{display:grid;grid-template-columns:110px 1fr 190px;gap:12px;align-items:center;background:#fff;border:1px solid #E3E8EC;border-left:5px solid var(--accent);border-radius:14px;padding:12px 14px}
-html.pbl-on .ph-card.now{border-left-color:#2E8B57;background:#F6FBF7}
-html.pbl-on .ph-wk{display:flex;flex-direction:column;font-family:'Lexend',sans-serif;line-height:1.25}
-html.pbl-on .ph-wk b{font-size:1rem}
-html.pbl-on .ph-wk span{font-size:.72rem;color:var(--accent-deep);font-weight:600}
-html.pbl-on .ph-wk small{font-size:.72rem;color:var(--muted)}
-html.pbl-on .ph-body h3{margin:0 0 3px;font-size:.95rem}
-html.pbl-on .ph-body p{margin:0;font-size:.82rem;color:var(--muted)}
-html.pbl-on .ph-field{margin:0}
-html.pbl-on .ph-field label{font-size:.72rem}
-html.pbl-on .agree{display:flex;gap:10px;align-items:flex-start;margin-top:12px;background:#E9F6EC;border:1px solid #BFE3C8;border-radius:12px;padding:12px 14px;font-size:.9rem;cursor:pointer}
-html.pbl-on .agree input{width:18px;height:18px;margin-top:2px}
-html.pbl-on .rv-check{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:6px;font-size:.86rem}
-html.pbl-on .rv-check li{padding:7px 10px;border-radius:9px;background:#F7F9FA}
-html.pbl-on .rv-check li.yes{background:#E9F6EC}
-html.pbl-on .rv-check li.no{background:#FFF6DF}
-@media (max-width:900px){html.pbl-on .grid2,html.pbl-on .proj-io,html.pbl-on .role-grid{grid-template-columns:1fr}
-html.pbl-on .ph-card{grid-template-columns:1fr}
-html.pbl-on .date-hero{flex-direction:column}
-html.pbl-on .proj-row{flex-direction:column}}
-html.pbl-on .gantt{min-width:520px}
-html.pbl-on .g-row{grid-template-columns:minmax(118px,1.35fr) minmax(96px,.95fr) repeat(var(--wk,4),minmax(62px,1fr))}
-html.pbl-on .g-row>div{padding:6px 6px}
-html.pbl-on .g-tname{font-size:.8rem}
-html.pbl-on .g-cell:has(.g-bar.on:not(.l)){border-left-color:transparent}
-/* ===== PBL: one-row header on the right page and more room for the steps ===== */
-html.pbl-on .lock-note{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:#FFF6DF;border:1px solid #F0DCA4;color:#7A5200;border-radius:10px;padding:6px 10px;margin:0 0 8px;font:500 .8rem 'Lexend',sans-serif}
-html.pbl-on .lock-note button,html.pbl-on .unlock-btn{border:1.5px solid #C77C12;background:#fff;color:#8A5A00;border-radius:8px;padding:3px 10px;font:600 .78rem 'Lexend',sans-serif;cursor:pointer}
-html.pbl-on body.locked .lock-note button,html.pbl-on body.locked .unlock-btn{cursor:pointer}
-html.pbl-on .hg-head{max-height:52px}
-html.pbl-on .topbar.pbl-top{padding:4px 18px 4px 32px}
-html.pbl-on .pt-row{display:flex;align-items:center;gap:8px;min-width:0;white-space:nowrap}
-html.pbl-on .pt-code{font:700 .74rem 'Lexend',sans-serif;color:#fff;background:var(--accent-deep);border-radius:6px;padding:2px 8px;flex:none}
-html.pbl-on .pt-who{font:600 .76rem 'Lexend',sans-serif;color:var(--accent-deep);flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}
-html.pbl-on .pt-dates{display:flex;gap:5px;flex:none;align-items:center}
-html.pbl-on .pt-dates .db{font-size:.68rem;padding:1px 8px;margin:0}
-html.pbl-on .pbl-top .pbar{margin-top:4px;height:3px}
-html.pbl-on .runhead{padding-top:3px;padding-bottom:3px}
-html.pbl-on .stage{padding:8px 20px 8px 36px}
-html.pbl-on .step-title{font-size:1rem;margin:0}
-html.pbl-on .step-sub{font-size:.8rem;margin:0 0 6px}
-html.pbl-on .card{padding:10px 14px;margin-bottom:8px}
-html.pbl-on .field{margin-bottom:8px}
-html.pbl-on .date-hero{margin-bottom:8px}
-html.pbl-on .dh{padding:8px 12px}
-html.pbl-on .dh>span{font-size:1.5rem}
-html.pbl-on .ph-list{gap:6px}
-html.pbl-on .ph-card{padding:7px 12px}
-html.pbl-on .todo{gap:5px;margin-top:6px}
-html.pbl-on textarea.txt{min-height:60px}
-html.pbl-on .navbar{padding:3px 18px 4px 32px}
-@media (max-width:900px){html.pbl-on .pt-row{flex-wrap:wrap;white-space:normal}}
 /* ===== Linked pages (project etc.) shown full screen with the WEEKS HOME button ===== */
 html.frame-on,html.frame-on body{overflow:hidden}
 .page-frame{position:fixed;inset:0;z-index:5000;background:#000}
@@ -781,11 +612,12 @@ html.wk-on .wk.ai-wk .slot-btn{background:linear-gradient(135deg,#3B82F6 0%,#1D4
    A week entry in labs.json fills a button when its "slot" is LAB-1 / LAB-2 / LAB-3 / CS-TEST / HW,
    or its "label" equals the button text (e.g. "WK-3-LAB-2"). Entries with neither fill the
    remaining buttons in order. Buttons with no entry show "SOON".
+
+   The Quarter 1 Project card opens PBL_URL (an HTML page) full screen. It does not use any JSON.
    ===================================================================================== */
 (function(){
 'use strict';
-const DATA_FILES=['Common Files/labs.json','Common Files/PROJECTPBL.json'];   /* data files, relative to this page (add more here if needed) */
-const DATA_URL=DATA_FILES.join(' / ');
+const DATA_URL='Common Files/labs.json';   /* lab data file, relative to this page */
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const plain=html=>{const d=document.createElement('div');d.innerHTML=html||'';return d.textContent;};
@@ -817,7 +649,7 @@ function slotEntries(k){
 }
 function buildWeekButtons(){
   $$('.b-btns',left.parentNode).forEach(box=>{box.innerHTML='';const k=box.dataset.key;
-    if(k==='project'){                                   /* the project card keeps its own button(s) */
+    if(k==='project'){                                   /* the project card opens the project HTML page */
       const b=document.createElement('button');b.type='button';b.className='load';b.textContent='Load Quarter 1 Project';
       b.addEventListener('click',e=>{e.stopPropagation();openFrame(PBL_URL,'Quarter 1 Project');});box.appendChild(b);
       return;}
@@ -855,7 +687,7 @@ function openFrame(url,title){
   document.body.appendChild(wrap);
 }
 function openEntry(it){
-  if(it.lab||it.pbl){location.hash=it.lab||it.pbl;return;}           /* hashchange opens the lab */
+  if(it.lab){location.hash=it.lab;return;}                            /* hashchange opens the lab */
   if(it.url){if(it.embed===false)window.location.href=it.url;else location.hash=it.id;}
 }
 function wireCards(){
@@ -869,56 +701,20 @@ function wireCards(){
 }
 
 /* ---------------------------------- data loading ---------------------------------- */
-/* Every file is merged: "labs" and "phases" lists are joined, "weeks", "assets" and settings are combined. */
-function mergeData(list){
-  const D={weeks:{},labs:[],phases:[],assets:{}};
-  list.forEach(d=>{if(!d)return;
-    Object.keys(d).forEach(k=>{
-      if(k==='labs'||k==='phases')D[k]=D[k].concat(d[k]||[]);
-      else if(k==='assets')Object.assign(D.assets,d.assets);
-      else if(k==='weeks')Object.keys(d.weeks).forEach(w=>{D.weeks[w]=(D.weeks[w]||[]).concat(d.weeks[w]);});
-      else if(D[k]==null)D[k]=d[k];});});
-  /* a project phase can place itself on a week card with "weeksCard" (e.g. "project") */
-  D.phases.forEach(p=>{if(p.weeksCard!=null){const k=String(p.weeksCard);D.weeks[k]=(D.weeks[k]||[]);
-    if(!D.weeks[k].some(e=>e.pbl===p.id))D.weeks[k].push({label:p.buttonLabel||('Load '+p.title),pbl:p.id});}});
-  return D;
-}
-let loaded=[];
+function normalise(d){return Object.assign({weeks:{},labs:[],assets:{}},d||{});}
 async function loadData(){
-  const res=await Promise.all(DATA_FILES.map(f=>fetch(f,{cache:'no-cache'}).then(r=>{if(!r.ok)throw 0;return r.json();}).catch(()=>null)));
-  loaded=res;return res.every(Boolean)?mergeData(res):null;
-}
-function askForFile(){
-  const bar=document.createElement('div');bar.className='data-bar';
-  const need=DATA_FILES.filter((f,i)=>!loaded[i]);
-  bar.innerHTML='<span>Could not read <b>'+esc(need.join(', '))+'</b> automatically (pages opened straight from a folder block this). Select '+(need.length>1?'these files together':'this file')+' to continue:</span>';
-  const inp=document.createElement('input');inp.type='file';inp.accept='.json,application/json';inp.multiple=true;
-  const btn=document.createElement('button');btn.type='button';btn.textContent='Choose '+need.join(' + ');btn.addEventListener('click',()=>inp.click());
-  inp.addEventListener('change',async()=>{const files=[...inp.files];if(!files.length)return;
-    let got;
-    try{got=await Promise.all(files.map(f=>f.text().then(t=>({name:f.name,data:JSON.parse(t)}))));}
-    catch(err){say('That file is not valid JSON.');return;}
-    got.forEach(g=>{const base=f=>f.split('/').pop().toLowerCase();
-      let i=DATA_FILES.findIndex(f=>base(f)===g.name.toLowerCase());
-      if(i<0)i=DATA_FILES.findIndex((f,k)=>!loaded[k]&&(g.data.labs?/lab/i.test(f):g.data.phases?/pbl|project/i.test(f):false));
-      if(i<0)i=loaded.length;loaded[i]=g.data;});
-    const miss=DATA_FILES.filter((f,i)=>!loaded[i]);
-    if(miss.length){say('Still needed: '+miss.join(', '));return;}
-    DATA=mergeData(loaded);bar.remove();
-    try{ready();}catch(err){console.error(err);say('The data loaded, but the page could not open it: '+err.message);}});
-  bar.appendChild(btn);bar.appendChild(inp);document.body.appendChild(bar);
+  try{const r=await fetch(DATA_URL,{cache:'no-cache'});if(!r.ok)throw 0;return normalise(await r.json());}
+  catch(_){return null;}
 }
 function ready(){buildWeekButtons();route();}
 window.addEventListener('hashchange',route);
 function labById(id){return DATA&&(DATA.labs||[]).find(l=>l.id===id);}
-function phaseById(id){return DATA&&(DATA.phases||[]).find(p=>p.id===id);}
 function route(){
   if(!DATA)return;
   const id=decodeURIComponent(location.hash.slice(1));
-  const lab=id&&labById(id),ph=!lab&&id&&phaseById(id);
-  const page=!lab&&!ph&&id&&allPages().find(p=>p.id===id);
+  const lab=id&&labById(id);
+  const page=!lab&&id&&allPages().find(p=>p.id===id);
   if(lab){if(!active||active.id!==lab.id)showLab(lab);}
-  else if(ph){if(!active||active.id!==ph.id)showLab(ph,true);}
   else if(page){if(!active||active.id!==page.id)showPage(page);}
   else{if(id)say(id+' was not found in '+DATA_URL+'.');if(active)showWeeks();}
 }
@@ -927,13 +723,13 @@ function route(){
 let active=null;            /* {id, destroy} */
 const VIEW_TITLE=document.title,VIEW_ICON=$('link[rel=icon]').href;
 function stash(page){const f=document.createDocumentFragment();while(page.firstChild)f.appendChild(page.firstChild);return f;}
-function showLab(lab,isPbl){
+function showLab(lab){
   if(active)active.destroy();
   if(document.documentElement.classList.contains('frame-on'))showWeeks();
   if(!weeksView.left){weeksView.left=stash(left);weeksView.right=stash(right);}
   else{left.innerHTML='';right.innerHTML='';}
-  const h=document.documentElement.classList;h.remove('wk-on','pbl-on');h.add('lab-on');if(isPbl)h.add('pbl-on');
-  try{active=isPbl?mountPbl(lab):mountLab(lab);}
+  const h=document.documentElement.classList;h.remove('wk-on');h.add('lab-on');
+  try{active=mountLab(lab);}
   catch(err){console.error(err);active=null;say('Could not open '+(lab.title||lab.id)+': '+err.message);}
 }
 function showWeeks(){
@@ -943,11 +739,11 @@ function showWeeks(){
   left.innerHTML='';right.innerHTML='';
   if(weeksView.left){left.appendChild(weeksView.left);right.appendChild(weeksView.right);weeksView.left=weeksView.right=null;}
   left.setAttribute('aria-label',weeksView.labels.left);right.setAttribute('aria-label',weeksView.labels.right);
-  document.documentElement.classList.remove('lab-on','pbl-on');document.documentElement.classList.add('wk-on');
+  document.documentElement.classList.remove('lab-on');document.documentElement.classList.add('wk-on');
   document.title=VIEW_TITLE;setIcon(VIEW_ICON);
   $$('.fc.flip').forEach(c=>c.classList.remove('flip'));
 }
-/* Linked HTML pages (e.g. the Quarter 1 Project) open full screen inside this page, with the WEEKS HOME button on top */
+/* Linked HTML pages open full screen inside this page, with the WEEKS HOME button on top */
 function homeButtonHtml(cls){const h=HOME();return `<button type="button" class="${cls}" title="Back to the Weeks page"><span aria-hidden="true">${esc(h.icon)}</span> ${esc(h.label)}</button>`;}
 function showPage(it){
   showWeeks();
@@ -1385,338 +1181,10 @@ return{id:lab.id,destroy(){
 }};
 }
 
-/* ===================================================================================
-   PROJECT (PBL) RENDERER + ENGINE: PROJECTPBL.json -> the original project page markup
-   =================================================================================== */
-const fmt=(s,v)=>String(s==null?'':s).replace(/\{(\w+)\}/g,(m,k)=>v&&v[k]!=null?v[k]:m);
-function pblBlock(b){
-  if(b.type==='dates')return `<div class="dates">${b.items.map(d=>`<div${d.deadline?' class="dl"':''}><small>${esc(d.label)}</small><b>${esc(d.value)}</b><span>${esc(d.note)}</span></div>`).join('')}</div>`;
-  if(b.type==='paragraph'&&b.class)return `<p class="${esc(b.class)}">${b.html}</p>`;
-  return renderBlock(b);
-}
-function renderPblGuide(P){
-  const g=P.guide;
-  return `<img class="hg-head" src="${esc(asset(P.headerImage))}" alt="" onerror="this.remove()">`+
-  `<div class="runhead"><span>${esc(P.unitLine)}</span><span class="part">${esc(P.partLabel)}</span></div>`+
-  `<div class="deck"><div class="snav-head">${esc(g.manualTitle)}</div><nav class="snav" aria-label="Steps">`+
-  P.steps.map((s,i)=>`<button type="button" class="snav-item"><span class="s-ico">${esc(s.icon)}</span><span class="s-txt"><b>${i+1}. ${esc(s.title)}</b><small>${esc(s.navHint)}</small></span><span class="s-st"></span></button>`).join('')+`</nav>`+
-  g.cards.map(c=>c.dynamic?`<div class="gsec" id="${esc(c.id)}"></div>`:`<div class="gsec" id="${esc(c.id)}"><span class="ctag">${esc(c.tag)}</span>${c.blocks.map(pblBlock).join('')}</div>`).join('')+
-  `</div><div class="g-foot"><span id="g-page"></span><span>${esc(g.footerRight)}</span></div>`;
-}
-/* Student details step: a "fields" list in the JSON (text boxes, or dropdowns when "options" is given) */
-function pblDetailFields(s){return Array.isArray(s&&s.fields)?s.fields:[];}
-function pblStepBody(P,s){
-  const t=P.text,W=P.schedule.weeks;
-  switch(s.kind){
-    case 'overview':{const dh=(x,c)=>`<div class="dh ${c}"><span>${esc(x.icon)}</span><div><small>${esc(x.label)}</small><b>${esc(x.value)}</b><em>${esc(x.week)}</em></div></div>`;const tw=s.thisWeek;
-      return `<div class="date-hero">${dh(s.start,'start')}<div class="dh-line"><i></i><span>${esc(s.duration)}</span><i></i></div>${dh(s.end,'end')}</div>`+
-        `<div class="card"><h3>${tw.title}</h3><p class="sub">${tw.sub}</p><ol class="todo">${tw.items.map(it=>`<li><span>${esc(it.icon)}</span><b>${esc(it.title)}</b> ${esc(it.text)}</li>`).join('')}</ol><div class="out-box">${tw.output}</div></div>`+
-        `<div class="card"><h3>${s.note.title}</h3><p class="sub">${s.note.sub}</p></div>`;}
-    case 'info':{const f=s.fields;
-      return `<div class="card"><div class="field"><label for="f-project">${esc(f.project.label)}</label><div class="proj-row"><select class="txt" id="f-project"><option value="">${esc(f.project.placeholder)}</option></select><div class="cat-badge" id="cat-badge"></div></div></div>`+
-        `<div class="grid2"><div class="field"><label for="f-group">${esc(f.group.label)}</label><input class="txt" id="f-group" readonly placeholder="${esc(f.group.placeholder)}"></div>`+
-        `<div class="field"><label for="f-title">${esc(f.title.label)}</label><input class="txt" id="f-title" maxlength="${f.title.maxLength}" placeholder="${esc(f.title.placeholder)}"></div></div>`+
-        `<div class="field"><label for="f-team">${esc(f.team.label)}</label><input class="txt" id="f-team" maxlength="${f.team.maxLength}" placeholder="${esc(f.team.placeholder)}"></div>`+
-        `<div class="field"><label for="f-app">${esc(f.application.label)}</label><textarea class="txt" id="f-app" rows="${f.application.rows}" maxlength="${f.application.maxLength}"></textarea></div><div class="proj-io" id="proj-io"></div></div>`;}
-    case 'team':{const DF=pblDetailFields(s);
-      if(DF.length){
-        return `<div class="card"><div class="grid2">${DF.map(f=>{const id='d-'+f.key,nm=f.key==='sname';
-          const ctl=Array.isArray(f.options)
-            ?`<select class="txt f-detail" id="${esc(id)}" data-k="${esc(f.key)}"><option value="">${esc(f.placeholder||'')}</option>${f.options.map(o=>`<option>${esc(o)}</option>`).join('')}</select>`
-            :`<input class="txt f-detail${nm?' f-member':''}" id="${esc(id)}" data-k="${esc(f.key)}" maxlength="${f.maxLength||s.maxLength||40}" placeholder="${esc(f.placeholder||'')}">`;
-          return `<div class="field"><label for="${esc(id)}">${esc(f.label)}</label>${ctl}</div>`;}).join('')}</div></div>`;}
-      let h='';for(let i=0;i<P.team.size;i++)h+=`<div class="field mem"><label for="m${i}"><span class="mem-n">${i+1}</span> ${esc(fmt(s.memberLabel,{n:i+1}))}</label><input class="txt f-member" id="m${i}" maxlength="${s.maxLength}" placeholder="${esc(s.placeholder)}"></div>`;
-      return `<div class="card"><div class="members">${h}</div></div>`;}
-    case 'roles':return P.roles.map(r=>`<div class="card role-card"><div class="role-top"><span class="role-ico">${esc(r.icon)}</span><div><h3>${esc(r.title)}</h3><p class="sub">${r.description}</p></div></div>`+
-        `<div class="role-grid"><div class="field"><label for="r-${esc(r.key)}">${esc(s.memberLabel)}</label><select class="txt" id="r-${esc(r.key)}"></select></div>`+
-        `<div class="field"><label for="n-${esc(r.key)}">${esc(s.noteLabel)}</label><input class="txt" id="n-${esc(r.key)}" maxlength="${s.noteMaxLength}" placeholder="${esc(r.notePlaceholder)}"></div></div><p class="dup-msg">${esc(s.duplicateMessage)}</p></div>`).join('');
-    case 'gantt':return `<div class="card gantt-card"><div class="gantt-top"><h3>${esc(s.chartTitle)}</h3><div class="g-legend">${s.legend.map(l=>`<span>${l}</span>`).join('')}</div></div><div class="gantt-wrap"><div class="gantt" id="gantt" style="--wk:${W.length}"></div></div><button type="button" class="btn btn-ghost add-btn" id="add-task">${esc(s.addTaskLabel)}</button></div>`+
-        `<div class="card"><h3>${esc(s.tableTitle)}</h3><p class="sub">${s.tableSub}</p><table class="ttable" id="task-table"></table></div>`;
-    case 'phase':return `<div class="ph-list">${W.map(w=>`<div class="ph-card${w.highlight?' now':''}"><div class="ph-wk"><b>${esc(t.weekWord)} ${w.week}</b><span>${esc(t.phaseWeek)} ${w.phaseWeek}</span><small>${esc(w.dates)}</small></div><div class="ph-body"><h3>${esc(w.icon)} ${esc(w.focus)}</h3><p><b>${esc(t.studentsFillLabel)}</b> ${w.studentsFill}</p></div><div class="field ph-field"><label>${esc(s.targetLabel)}</label><select class="txt ph-day"></select></div></div>`).join('')}</div>`+
-        `<label class="agree"><input type="checkbox" id="f-agree"><span>${s.agreeHtml}</span></label>`;
-    case 'review':return `<div class="card"><h3>${esc(s.checklistTitle)}</h3><ul class="rv-check" id="rv-check"></ul></div><div class="card"><h3>${esc(s.infoTitle)}</h3><table class="ttable kv" id="rv-info"></table></div>`+
-        `<div class="card"><h3>${esc(s.rolesTitle)}</h3><table class="ttable kv" id="rv-roles"></table></div>`+
-        `<div class="card"><h3>${esc(s.tasksTitle)}</h3><table class="ttable"><thead><tr><th>${esc(t.ganttTask)}</th><th>${esc(t.plannedWeek)}</th><th>${esc(t.ganttResponsible)}</th></tr></thead><tbody id="rv-tasks"></tbody></table></div>`+
-        `<div class="card"><h3>${esc(s.phaseTitle)}</h3><table class="ttable"><thead><tr><th>${esc(t.weekWord)}</th><th>${esc(t.focus)}</th><th>${esc(t.targetDay)}</th></tr></thead><tbody id="rv-phase"></tbody></table>`+
-        `<div class="btns"><button class="btn btn-primary" id="submit-btn" type="button">${esc(s.submitLabel)}</button><button class="btn btn-ghost" id="pdf-btn" type="button">${esc(s.pdfLabel)}</button></div><div class="result" id="result" aria-live="polite"></div></div>`;
-  }
-  return '';
-}
-function renderPblWork(P){
-  const d=P.datebar;
-  const WK=P.schedule.weeks,first=WK[0],lastW=WK[WK.length-1];
-  const sDay=first&&first.days&&first.days[0]||'',eDay=lastW&&lastW.days&&lastW.days[lastW.days.length-1]||'';
-  return `<img class="hg-head" src="${esc(asset(P.headerImage))}" alt="" onerror="this.remove()">`+
-  `<div class="topbar pbl-top"><div class="pt-row">`+
-  `<b class="pt-code">${esc(P.code)}</b><span class="pt-who" id="who"></span>`+
-  `<span class="pt-dates"><span class="db s" title="${esc(plain(d.start))}">\u{1F680} ${esc(sDay)}${first?' \u00B7 W'+first.week:''}</span>`+
-  `<span class="db e" title="${esc(plain(d.deadline))}">\u{1F3C1} ${esc(eDay)}${lastW?' \u00B7 W'+lastW.week:''}</span>`+
-  `<span class="db p">${esc(d.completeLabel)} <b id="pct">0%</b></span></span></div>`+
-  `<div class="brand sr"><h1>${esc(P.title)}</h1></div>`+
-  `<div class="pbar"><i id="pbar"></i></div></div>`+
-  `<div class="stage">${P.steps.map(s=>`<section class="step" id="${esc(s.id)}" data-title="${esc(s.icon+' '+s.title)}" data-guide="${esc(s.guide)}" hidden><h2 class="step-title">${esc(s.icon)} ${esc(s.title)}</h2><p class="step-sub">${s.subtitle}</p>${pblStepBody(P,s)}</section>`).join('')}</div>`+
-  `<div class="navbar">${homeButtonHtml('nbtn home" id="home')}<button class="nbtn" id="prev" type="button">${esc((P.text.previous)||'\u2190 Previous')}</button><div class="where" id="where"></div><button class="nbtn primary" id="next" type="button">${esc((P.text.next)||'Next \u2192')}</button></div>`;
-}
-function renderPblModal(P){
-  const m=P.modal;
-  return `<div class="modal"><div class="m-head"><span>${esc(P.unitLine)}</span><span>${esc(m.partLabel)}</span></div><h2 id="m-title">${esc(m.title)}</h2><p class="m-sub">${m.subtitle}</p>`+
-  `<div class="m-fields">${m.fields.map(f=>`<div class="field"><label for="s-${esc(f.key)}">${esc(f.label)}</label><input class="txt" id="s-${esc(f.key)}" type="text" placeholder="${esc(f.placeholder)}"></div>`).join('')}</div>`+
-  `<ul class="m-how">${m.howTo.map(h=>`<li>${h}</li>`).join('')}</ul><p class="m-err" id="m-err" hidden>${esc(m.error)}</p><button type="button" class="btn btn-primary" id="m-ok">${esc(m.okLabel)}</button></div>`;
-}
-window.PblRender={renderPblGuide,renderPblWork,renderPblModal};
-
-function mountPbl(P){
-const ac=new AbortController();
-const on=(t,ev,fn,o)=>t.addEventListener(ev,fn,Object.assign({},o||{},{signal:ac.signal}));
-const timers=new Set();const later=(fn,ms)=>{const id=setTimeout(()=>{timers.delete(id);fn();},ms);timers.add(id);return id;};
-document.title=P.pageTitle||P.title;if(P.favicon)setIcon(emojiIcon(P.favicon));
-left.setAttribute('aria-label',P.guide.ariaLabel||'Project guide');right.setAttribute('aria-label',P.title);
-left.innerHTML=renderPblGuide(P);right.innerHTML=renderPblWork(P);
-/* no start pop-up in the project view: the student enters SNUMBER / SNAME / SGRADE in Student Details */
-const TX=P.text,PDF=P.pdf,PROJECTS=P.projects,ROLES=P.roles.map(r=>[r.key,r.title]),SIZE=Math.max(1,+P.team.size||1);
-const DETAILS=()=>pblDetailFields(P.steps.find(x=>x.kind==='team'));             /* Student details fields */
-const parseDay=(s,end)=>{const [y,m,d]=s.split('-').map(Number);return end?new Date(y,m-1,d,23,59):new Date(y,m-1,d);};
-const WEEKS=P.schedule.weeks.map(w=>({n:w.week,p:w.phaseWeek,d:w.dates,from:parseDay(w.from),to:parseDay(w.to,true)}));
-const DAYS=P.schedule.weeks.map(w=>w.days),PH=P.schedule.weeks.map(w=>w.focus),FILL=P.schedule.weeks.map(w=>plain(w.studentsFill));
-const COLORS=P.tasks.colors,MAXT=P.tasks.max||9;
-const KEY=P.storageKey||('pbl-'+P.id);
-const kindOf=id=>(P.steps.find(s=>s.id===id)||{}).kind;
-let S={student:{name:'',sid:'',grade:''},details:{},project:'',title:'',team:'',app:'',grade:'',members:Array(SIZE).fill(''),
-  roles:Object.fromEntries(ROLES.map(([k])=>[k,''])),notes:Object.fromEntries(ROLES.map(([k])=>[k,''])),
-  tasks:P.tasks.defaults.map(t=>({name:t.name,weeks:[],resp:'',fixed:true,sug:t.suggestedWeek})),
-  phase:WEEKS.map(()=>({day:'',ok:false})),agree:false,submitted:false,submittedAt:''};
-try{const s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&s.tasks)S=Object.assign(S,s);}catch(_){}
-/* keep saved work valid if the JSON changes (e.g. more team members or weeks) */
-S.members=Array.from({length:SIZE},(_,i)=>(S.members||[])[i]||'');
-S.phase=WEEKS.map((_,i)=>(S.phase||[])[i]||{day:'',ok:false});
-S.student=Object.assign({name:'',sid:'',grade:''},S.student||{});
-S.details=S.details||{};
-ROLES.forEach(([k])=>{if(S.roles[k]==null)S.roles[k]='';if(S.notes[k]==null)S.notes[k]='';});
-if(!S.student.name&&student.name)S.student=Object.assign({},S.student,{name:student.name,sid:student.sid});
-const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S));}catch(_){}};
-const toastEl=document.createElement('div');toastEl.className='toast';document.body.appendChild(toastEl);
-let tt;function toast(m){toastEl.textContent=m;toastEl.classList.add('show');clearTimeout(tt);tt=later(()=>toastEl.classList.remove('show'),2600);}
-const memberNames=()=>S.members.map(m=>m.trim()).filter(Boolean);
-const gradeOf=()=>S.details.sgrade||S.student.grade||'';
-const nameOf=()=>S.details.sname||S.student.name||'';
-const sidOf=()=>S.details.snumber||S.student.sid||'';
-function whoLine(){const w=$('#who');if(w)w.textContent=[nameOf(),sidOf()?'SID '+sidOf():'',gradeOf()].filter(Boolean).join(' | ');
-  const g=$('#g-page');if(g)g.textContent=nameOf();}
-
-/* ---------- steps & navigation ---------- */
-const steps=$$('.step',right),navItems=$$('.snav-item',left);let cur=0;
-function go(i){i=Math.max(0,Math.min(steps.length-1,i));cur=i;
-  steps.forEach((s,k)=>s.hidden=k!==i);$('.stage',right).scrollTop=0;
-  navItems.forEach((n,k)=>n.classList.toggle('cur',k===i));
-  $$('.gsec',left).forEach(g=>g.classList.toggle('show',steps[i].dataset.guide.split(' ').includes(g.id)));
-  $('#where').textContent=fmt(TX.whereStep,{n:i+1,total:steps.length,title:steps[i].dataset.title});
-  $('#prev').disabled=i===0;$('#next').style.visibility=i===steps.length-1?'hidden':'visible';
-  const k=kindOf(steps[i].id);
-  if(k==='roles')renderRoles();if(k==='gantt')renderGantt();if(k==='review')renderReview();
-  update();}
-navItems.forEach((n,k)=>n.addEventListener('click',()=>go(k)));
-$('#prev').addEventListener('click',()=>go(cur-1));
-$('#next').addEventListener('click',()=>{const m=missing(steps[cur].id);if(m.length&&!S.submitted){toast(fmt(TX.stillToComplete,{list:m.join(', ')}));}go(cur+1);});
-$('#home').addEventListener('click',()=>window.backToWeeks());
-
-/* ---------- completeness ---------- */
-const MS=TX.missing;
-function missing(id){const m=[],k=kindOf(id);
-  if(k==='info'){if(!S.project)m.push(MS.project);if(!S.team.trim())m.push(MS.team);if(!S.app.trim())m.push(MS.application);}
-  if(k==='team'){const DF=DETAILS();
-    if(DF.length)DF.forEach(f=>{if(!String(S.details[f.key]||'').trim())m.push(f.label);});
-    else if(memberNames().length<SIZE)m.push(MS.members);}
-  if(k==='roles'){ROLES.forEach(([k2,l])=>{if(!S.roles[k2])m.push(l);});
-    if(SIZE>1){const v=ROLES.map(([k2])=>S.roles[k2]).filter(Boolean);if(new Set(v).size!==v.length)m.push(MS.differentRoles);}}
-  if(k==='gantt'){S.tasks.forEach(t=>{if(!t.name.trim())m.push(MS.taskName);else{if(!t.weeks.length)m.push(fmt(MS.taskWeek,{task:t.name}));if(!t.resp)m.push(fmt(MS.taskResp,{task:t.name}));}});}
-  if(k==='phase'){S.phase.forEach((p,i)=>{if(!p.day)m.push(fmt(MS.targetDay,{week:WEEKS[i].n}));});if(!S.agree)m.push(MS.agree);}
-  return m;}
-const CHECK=P.steps.filter(s=>['info','team','roles','gantt','phase'].includes(s.kind)).map(s=>s.id);
-function update(){
-  let done=0;
-  navItems.forEach((n,k)=>{const id=steps[k].id;if(!CHECK.includes(id)){n.classList.toggle('ok',kindOf(id)==='overview'?(S.seen||cur>0):!!S.submitted);if(kindOf(id)==='overview'&&cur>0)S.seen=true;return;}
-    const ok=!missing(id).length;n.classList.toggle('ok',ok);if(ok)done++;});
-  const pct=Math.round(done/CHECK.length*100);
-  $('#pbar').style.width=pct+'%';$('#pct').textContent=pct+'%';
-  save();}
-
-/* ---------- project dropdown & basic info ---------- */
-const sel=$('#f-project');
-PROJECTS.forEach((p,i)=>{const o=document.createElement('option');o.value=i;o.textContent=`${i+1}. ${p.title}`;sel.appendChild(o);});
-function showProject(){const p=PROJECTS[S.project];const gp=$('#g-proj',left);
-  $('#cat-badge').innerHTML=p?`<span class="cat-ico">${p.icon}</span><span><small>${esc(TX.categoryLabel)}</small>${esc(p.category)}</span>`:`<span class="cat-ico">❔</span><span><small>${esc(TX.categoryLabel)}</small>${esc(TX.chooseProjectBadge)}</span>`;
-  $('#cat-badge').classList.toggle('on',!!p);
-  $('#f-group').value=p?p.group:'';
-  $('#proj-io').innerHTML=p?`<div><h5>${esc(TX.inputsTitle)}</h5><p>${p.inputs.map(x=>`<span class="io in">${esc(x)}</span>`).join('')}</p></div><div><h5>${esc(TX.outputsTitle)}</h5><p>${p.outputs.map(x=>`<span class="io out">${esc(x)}</span>`).join('')}</p></div>`:`<p class="muted">${esc(TX.ioEmpty)}</p>`;
-  if(gp)gp.innerHTML=p?`<span class="ctag">${esc(TX.projectCardTag)}</span><h3>${p.icon} ${esc(p.title)}</h3><p><b>${esc(TX.categoryLabel)}:</b> ${esc(p.category)}<br><b>${esc(TX.projectCardGroup)}:</b> ${esc(p.group)}<br><b>${esc(TX.projectCardUse)}:</b> ${esc(p.application)}</p><h4>${esc(TX.inputsTitle)}</h4><p>${esc(p.inputs.join(', '))}</p><h4>${esc(TX.outputsTitle)}</h4><p>${esc(p.outputs.join(', '))}</p>`:`<span class="ctag">${esc(TX.projectCardTag)}</span><p>${esc(TX.projectCardEmpty)}</p>`;}
-sel.addEventListener('change',()=>{const old=PROJECTS[S.project];S.project=sel.value;const p=PROJECTS[S.project];
-  if(p){if(!S.title||(old&&S.title===old.title))S.title=p.title;if(!S.app||(old&&S.app===old.application))S.app=p.application;}
-  $('#f-title').value=S.title;$('#f-app').value=S.app;showProject();update();});
-[['#f-title','title'],['#f-team','team'],['#f-app','app']].forEach(([s,k])=>$(s).addEventListener('input',e=>{S[k]=e.target.value;update();}));
-$$('.f-member',right).forEach((el,i)=>el.addEventListener('input',e=>{S.members[i]=e.target.value;update();}));
-$$('.f-detail',right).forEach(el=>{const k=el.dataset.k;
-  el.addEventListener(el.tagName==='SELECT'?'change':'input',e=>{S.details[k]=e.target.value;whoLine();update();});});
-
-/* ---------- roles ---------- */
-function renderRoles(){
-  const names=memberNames();
-  ROLES.forEach(([k])=>{const s=$(`#r-${k}`);const v=S.roles[k];
-    s.innerHTML=`<option value="">${esc(TX.chooseMember)}</option>`+names.map(n=>`<option${n===v?' selected':''}>${esc(n)}</option>`).join('');
-    if(v&&!names.includes(v)){S.roles[k]='';}
-    $(`#n-${k}`).value=S.notes[k]||'';});
-  checkDup();if(S.submitted)$$('.role-card select,.role-card input',right).forEach(x=>x.disabled=true);}
-function checkDup(){const v=SIZE>1?ROLES.map(([k])=>S.roles[k]):ROLES.map(()=>'');
-  ROLES.forEach(([k],i)=>{const d=v[i]&&v.filter(x=>x===v[i]).length>1;$(`#r-${k}`).closest('.role-card').classList.toggle('dup',d);});}
-ROLES.forEach(([k])=>{$(`#r-${k}`).addEventListener('change',e=>{S.roles[k]=e.target.value;checkDup();update();});
-  $(`#n-${k}`).addEventListener('input',e=>{S.notes[k]=e.target.value;update();});});
-
-/* ---------- Gantt ---------- */
-function todayWeek(){const t=new Date();return WEEKS.findIndex(w=>t>=w.from&&t<=w.to);}
-const SUG=n=>fmt(TX.suggested,{week:n});
-function renderGantt(){
-  const names=memberNames(),tw=todayWeek(),g=$('#gantt'),last=WEEKS.length-1;
-  let h=`<div class="g-row g-head"><div class="g-task">${esc(TX.ganttTask)}</div><div class="g-resp">${esc(TX.ganttResponsible)}</div>${WEEKS.map((w,i)=>`<div class="g-week${i===tw?' today':''}"><b>${esc(TX.weekWord)} ${w.n}</b><span>${esc(TX.phaseWeek)} ${w.p}</span><small>${w.d}</small></div>`).join('')}</div>`;
-  h+=`<div class="g-row g-ms"><div class="g-task"><span class="ms-ico">🚩</span>${esc(TX.milestones)}</div><div class="g-resp"></div>${WEEKS.map((w,i)=>`<div class="g-cell ms${i===tw?' today':''}">${i===0?`<span class="ms start">${esc(P.schedule.milestoneStart)}</span>`:''}${i===last?`<span class="ms end">${esc(P.schedule.milestoneEnd)}</span>`:''}</div>`).join('')}</div>`;
-  S.tasks.forEach((t,ti)=>{const col=COLORS[ti%COLORS.length];
-    const name=t.fixed?`<b>${esc(t.name)}</b><small>${esc(SUG(WEEKS[t.sug]?WEEKS[t.sug].n:''))}</small>`:`<input class="txt g-name" data-t="${ti}" value="${esc(t.name)}" placeholder="${esc(TX.taskPlaceholder)}" maxlength="40"><button type="button" class="g-del" data-t="${ti}" title="${esc(TX.removeTask)}">✕</button>`;
-    h+=`<div class="g-row" style="--c:${col}"><div class="g-task"><i class="g-dot"></i><div class="g-tname">${name}</div></div>`+
-       `<div class="g-resp"><select class="txt g-sel" data-t="${ti}"><option value="">${esc(TX.choose)}</option>${names.map(n=>`<option${n===t.resp?' selected':''}>${esc(n)}</option>`).join('')}<option${t.resp===TX.wholeTeam?' selected':''}>${esc(TX.wholeTeam)}</option></select></div>`+
-       WEEKS.map((w,wi)=>{const on=t.weeks.includes(wi),l=on&&!t.weeks.includes(wi-1),r=on&&!t.weeks.includes(wi+1);
-         return `<div class="g-cell${wi===tw?' today':''}"><button type="button" class="g-bar${on?' on':''}${l?' l':''}${r?' r':''}" data-t="${ti}" data-w="${wi}" aria-pressed="${on}" aria-label="${esc(t.name||'Task')} in ${esc(TX.weekWord)} ${w.n}">${on&&l?esc(t.resp||''):''}</button></div>`;}).join('')+`</div>`;});
-  g.innerHTML=h;
-  $('#add-task').disabled=S.tasks.length>=MAXT||S.submitted;
-  if(S.submitted)$$('#gantt input,#gantt select,#gantt button').forEach(x=>x.disabled=true);
-  renderTaskTable();}
-$('#gantt').addEventListener('click',e=>{if(S.submitted)return;
-  const b=e.target.closest('.g-bar');if(b){const t=S.tasks[+b.dataset.t],w=+b.dataset.w;const i=t.weeks.indexOf(w);if(i>=0)t.weeks.splice(i,1);else t.weeks.push(w);t.weeks.sort((a,c)=>a-c);renderGantt();update();return;}
-  const d=e.target.closest('.g-del');if(d){S.tasks.splice(+d.dataset.t,1);renderGantt();update();}});
-$('#gantt').addEventListener('change',e=>{const s=e.target.closest('.g-sel');if(s){S.tasks[+s.dataset.t].resp=s.value;renderGantt();update();}});
-$('#gantt').addEventListener('input',e=>{const n=e.target.closest('.g-name');if(n){S.tasks[+n.dataset.t].name=n.value;renderTaskTable();update();}});
-$('#add-task').addEventListener('click',()=>{if(S.tasks.length>=MAXT)return;S.tasks.push({name:'',weeks:[],resp:'',fixed:false});renderGantt();update();later(()=>{const i=$$('.g-name',right);if(i.length)i[i.length-1].focus();},30);});
-function weeksText(t){return t.weeks.length?t.weeks.filter(w=>WEEKS[w]).map(w=>TX.weekWord+' '+WEEKS[w].n).join(', '):'-';}
-function renderTaskTable(){$('#task-table').innerHTML=`<thead><tr><th>${esc(TX.ganttTask)}</th><th>${esc(TX.plannedWeek)}</th><th>${esc(TX.ganttResponsible)}</th></tr></thead><tbody>`+
-  S.tasks.map(t=>`<tr><td>${esc(t.name||TX.unnamedTask)}</td><td>${weeksText(t)}</td><td>${esc(t.resp||'-')}</td></tr>`).join('')+'</tbody>';}
-
-/* ---------- phase schedule ---------- */
-$$('.ph-day',right).forEach((s,i)=>{s.innerHTML=`<option value="">${esc(TX.chooseDay)}</option>`+DAYS[i].map(d=>`<option>${esc(d)}</option>`).join('');
-  s.addEventListener('change',()=>{S.phase[i].day=s.value;update();});});
-$('#f-agree').addEventListener('change',e=>{S.agree=e.target.checked;update();});
-
-/* ---------- review ---------- */
-function renderReview(){const p=PROJECTS[S.project],R=TX.rows;
-  const row=(k,v)=>`<tr><td>${esc(k)}</td><td>${v?esc(v):`<span class="miss">${esc(TX.notFilled)}</span>`}</td></tr>`;
-  $('#rv-info').innerHTML=DETAILS().map(f=>row(f.label,S.details[f.key])).join('')+row(R.title,S.title)+row(R.category,p&&p.category)+row(R.group,p&&p.group)+row(R.team,S.team)+row(R.application,S.app)+(DETAILS().length?'':row(R.members,memberNames().join(', ')));
-  $('#rv-roles').innerHTML=ROLES.map(([k,l])=>row(l,S.roles[k]+(S.notes[k]?' - '+S.notes[k]:''))).join('');
-  $('#rv-tasks').innerHTML=S.tasks.map(t=>`<tr><td>${esc(t.name||TX.unnamed)}</td><td>${weeksText(t)}</td><td>${esc(t.resp||'-')}</td></tr>`).join('');
-  $('#rv-phase').innerHTML=S.phase.map((x,i)=>`<tr><td>${esc(TX.weekWord)} ${WEEKS[i].n}</td><td>${esc(PH[i])}</td><td>${x.day?esc(x.day):`<span class="miss">${esc(TX.notSet)}</span>`}</td></tr>`).join('');
-  const all=CHECK.map(id=>[steps.find(s=>s.id===id).dataset.title,missing(id)]);
-  $('#rv-check').innerHTML=all.map(([t,m])=>`<li class="${m.length?'no':'yes'}">${m.length?'⚠️':'✅'} <b>${esc(t)}</b>${m.length?': '+esc(m.join(', ')):''}</li>`).join('');}
-
-/* ---------- submit & PDF ---------- */
-function lockAll(){document.body.classList.add('locked');$$('.stage input,.stage select,.stage textarea,.stage button.g-bar,.stage .g-del,#add-task',right).forEach(x=>x.disabled=true);
-  $('#submit-btn').style.display='none';$('#result').innerHTML=fmt(TX.submittedHtml,{date:esc(S.submittedAt)})+
-    `<div class="btns"><button type="button" class="btn btn-ghost unlock-btn" id="unlock-btn">\u{1F513} Unlock to edit</button></div>`;
-  $('#result').classList.add('show');
-  $('#unlock-btn').addEventListener('click',unlockAll);
-  if(!$('#lock-note',right)){const n=document.createElement('div');n.id='lock-note';n.className='lock-note';
-    n.innerHTML=`\u{1F512} Submitted on ${esc(S.submittedAt)}. Your answers are locked. <button type="button">Unlock to edit</button>`;
-    n.querySelector('button').addEventListener('click',unlockAll);$('.stage',right).prepend(n);}}
-function unlockAll(){
-  if(!confirm('Unlock your work so you can change it? You will need to press Submit again when you finish.'))return;
-  S.submitted=false;S.submittedAt='';save();document.body.classList.remove('locked');
-  $$('.stage input,.stage select,.stage textarea,.stage button,#add-task',right).forEach(x=>x.disabled=false);
-  const n=$('#lock-note',right);if(n)n.remove();
-  $('#submit-btn').style.display='';$('#result').classList.remove('show');$('#result').innerHTML='';
-  renderGantt();renderRoles();renderReview();update();toast('Unlocked. You can edit your work again.');}
-$('#submit-btn').addEventListener('click',()=>{const m=CHECK.flatMap(missing);
-  if(m.length&&!confirm(fmt(TX.submitConfirm,{n:m.length})))return;
-  S.submitted=true;S.submittedAt=new Date().toLocaleString();save();lockAll();renderReview();toast(TX.submittedToast);});
-$('#pdf-btn').addEventListener('click',downloadPDF);
-/* PDF header: an embedded image ("@asset" or data: URL) or an image file path such as "Common Files/HgImages/Hgheader.png" */
-const PDF_HDR={data:P.pdfHeader?asset(P.pdfHeader.src):'',w:(P.pdfHeader&&P.pdfHeader.width)||1515,h:(P.pdfHeader&&P.pdfHeader.height)||112};
-function hdrData(){return new Promise(res=>{const src=PDF_HDR.data;if(!src)return res(null);if(/^data:/.test(src))return res(src);
-  const im=new Image();
-  im.onload=()=>{try{const c=document.createElement('canvas');c.width=im.naturalWidth;c.height=im.naturalHeight;const g=c.getContext('2d');
-    g.fillStyle='#fff';g.fillRect(0,0,c.width,c.height);g.drawImage(im,0,0);PDF_HDR.w=im.naturalWidth;PDF_HDR.h=im.naturalHeight;res(c.toDataURL('image/jpeg',.92));}catch(_){res(null);}};
-  im.onerror=()=>res(null);im.src=src;});}
-async function downloadPDF(){
-  const done=CHECK.filter(id=>!missing(id).length).length;
-  if(done/CHECK.length<(PDF.minimumShare!=null?PDF.minimumShare:0.4)){toast(fmt(TX.pdfMinimum,{done,total:CHECK.length}));return;}
-  const J=window.jspdf&&window.jspdf.jsPDF;if(!J){toast(TX.pdfOffline);return;}
-  const HDATA=await hdrData();
-  const doc=new J({unit:'mm',format:'a4'});const W=210,H=297,M=14,CW=W-2*M,BOT=H-16;
-  const HH=HDATA?W*PDF_HDR.h/PDF_HDR.w:0;let y=0;
-  const INK=[28,42,54],MUT=[92,107,120],GRN=[22,94,48],ACC=[21,74,99];
-  const clean=s=>String(s==null?'':s).replace(/[\u2018\u2019]/g,"'").replace(/[\u201C\u201D]/g,'"').replace(/[\u2013\u2014]/g,'-').replace(/[^\x20-\x7E]/g,'');
-  const font=(sz,st,c)=>{doc.setFontSize(sz);doc.setFont('helvetica',st);doc.setTextColor(...c);};
-  const need=h=>{if(y+h>BOT){doc.addPage();if(HDATA)doc.addImage(HDATA,'JPEG',0,0,W,HH);y=HH+12;}};
-  if(HDATA)doc.addImage(HDATA,'JPEG',0,0,W,HH);
-  doc.setFillColor(223,242,225);doc.rect(0,HH,W,22,'F');
-  font(15,'bold',GRN);doc.text(clean(PDF.title),M,HH+9.5);
-  font(9,'normal',[36,110,62]);doc.text(clean(PDF.subtitle),M,HH+16.5);
-  y=HH+28;
-  doc.setFillColor(241,244,246);doc.roundedRect(M,y,CW,20,3,3,'F');
-  const kv=(k,v,x,yy)=>{font(7.5,'normal',MUT);doc.text(k,x,yy);font(10,'bold',INK);doc.text(doc.splitTextToSize(clean(v||'-'),56)[0],x,yy+5);};
-  kv(PDF.submittedBy,nameOf(),M+4,y+6);kv(PDF.sid,sidOf(),M+70,y+6);kv(PDF.grade,gradeOf(),M+110,y+6);kv(PDF.status,S.submitted?fmt(PDF.statusSubmitted,{date:S.submittedAt}):PDF.statusDraft,M+140,y+6);
-  y+=24;
-  doc.setFillColor(255,246,223);doc.roundedRect(M,y,CW,9,2,2,'F');font(9.5,'bold',[140,90,0]);
-  doc.text(clean(PDF.datesLine),M+4,y+6);y+=15;
-  const sec=t=>{need(14);font(12.5,'bold',ACC);doc.text(clean(t),M,y);y+=2;doc.setDrawColor(...ACC);doc.setLineWidth(.4);doc.line(M,y,M+CW,y);y+=5;};
-  const table=(cols,rows,widths)=>{const lh=4.2;
-    const drawRow=(cells,head)=>{font(9,head?'bold':'normal',head?[255,255,255]:INK);
-      const lines=cells.map((c,i)=>doc.splitTextToSize(clean(c),widths[i]-4));const h=Math.max(...lines.map(l=>l.length))*lh+3;need(h);
-      if(head){doc.setFillColor(...ACC);doc.rect(M,y,CW,h,'F');}
-      let x=M;lines.forEach((l,i)=>{doc.text(l,x+2,y+4.3);x+=widths[i];});
-      doc.setDrawColor(220,227,232);doc.setLineWidth(.2);doc.line(M,y+h,M+CW,y+h);y+=h;};
-    drawRow(cols,true);rows.forEach(r=>drawRow(r,false));y+=5;};
-  const p=PROJECTS[S.project],R=TX.rows;
-  sec(PDF.sections[0]);
-  const infoRows=DETAILS().map(f=>[f.label,S.details[f.key]||'']).concat([[R.title,S.title],[PDF.infoRows.category,p?p.category:''],[R.group,p?p.group:''],[R.team,S.team],[R.application,S.app]]);
-  if(!DETAILS().length)infoRows.push([R.members,memberNames().join(', ')]);
-  table(PDF.infoColumns,infoRows,[50,CW-50]);
-  sec(PDF.sections[1]);
-  table(PDF.rolesColumns,ROLES.map(([k,l])=>[l,S.roles[k],S.notes[k]]),[52,45,CW-97]);
-  sec(PDF.sections[2]);
-  table(PDF.tasksColumns,S.tasks.map(t=>[t.name||TX.unnamedTask,weeksText(t),t.resp]),[70,50,CW-120]);
-  const NW=WEEKS.length;
-  const gh=12+S.tasks.length*8+10;need(gh+12);font(10.5,'bold',INK);doc.text(clean(PDF.ganttTitle),M,y);y+=4;
-  const tx=M,tw=58,cw=(CW-tw)/NW;
-  doc.setFillColor(...ACC);doc.rect(tx,y,CW,11,'F');font(8.5,'bold',[255,255,255]);doc.text(clean(TX.ganttTask),tx+2,y+7);
-  WEEKS.forEach((w,i)=>{const x=tx+tw+i*cw;doc.text(clean(`${TX.weekWord} ${w.n}`),x+2,y+5);font(7,'normal',[220,234,242]);doc.text(w.d,x+2,y+9);font(8.5,'bold',[255,255,255]);});
-  y+=11;
-  S.tasks.forEach((t,ti)=>{const c=hexRgbP(COLORS[ti%COLORS.length]);
-    if(ti%2){doc.setFillColor(247,249,250);doc.rect(tx,y,CW,8,'F');}
-    font(8.5,'normal',INK);doc.text(doc.splitTextToSize(clean(t.name||TX.unnamed),tw-4)[0],tx+2,y+5.3);
-    t.weeks.filter(w=>w<NW).forEach(w=>{const x=tx+tw+w*cw;const l=!t.weeks.includes(w-1),r=!t.weeks.includes(w+1);doc.setFillColor(...c);
-      doc.roundedRect(x+(l?1.5:0),y+1.5,cw-(l?1.5:0)-(r?1.5:0),5,l||r?1.5:0,l||r?1.5:0,'F');
-      if(l&&t.resp){font(7,'bold',[255,255,255]);doc.text(doc.splitTextToSize(clean(t.resp),cw-4)[0],x+3,y+5);}});
-    y+=8;});
-  doc.setDrawColor(200,210,218);for(let i=0;i<=NW;i++){const x=tx+tw+i*cw;doc.line(x,y-S.tasks.length*8-11,x,y);}
-  font(7.5,'bold',[192,49,90]);doc.text(clean(PDF.ganttStart),tx+tw+1,y+4);doc.text(clean(PDF.ganttEnd),tx+CW-1,y+4,{align:'right'});y+=10;
-  sec(PDF.sections[3]);
-  table(PDF.phaseColumns,S.phase.map((x,i)=>[fmt(PDF.phaseWeekCell,{week:WEEKS[i].n,phaseWeek:WEEKS[i].p}),PH[i],FILL[i],x.day]),[38,48,62,CW-148]);
-  need(10);font(9,'normal',INK);doc.text(clean(S.agree?PDF.agreeYes:PDF.agreeNo),M,y);y+=6;
-  const n=doc.getNumberOfPages();
-  for(let i=1;i<=n;i++){doc.setPage(i);font(8,'normal',MUT);doc.text(clean(fmt(PDF.footer,{team:S.team||PDF.footerTeam,name:nameOf(),sid:sidOf()})),M,H-8);doc.text(`Page ${i} of ${n}`,W-M,H-8,{align:'right'});}
-  const safe=v=>clean(v).replace(/[^A-Za-z0-9]+/g,'_').replace(/^_|_$/g,'');
-  doc.save(fmt(PDF.fileName,{team:safe(S.team)||PDF.fileTeam,name:safe(nameOf())||PDF.fileStudent}));toast(TX.pdfDone);}
-function hexRgbP(h){h=h.replace('#','');return[0,2,4].map(i=>parseInt(h.substr(i,2),16));}
-
-/* ---------- restore ---------- */
-sel.value=S.project;$('#f-title').value=S.title;$('#f-team').value=S.team;$('#f-app').value=S.app;
-$$('.f-member',right).forEach((el,i)=>el.value=S.members[i]||'');
-$$('.f-detail',right).forEach(el=>el.value=S.details[el.dataset.k]||'');
-$$('.ph-day',right).forEach((s,i)=>s.value=S.phase[i].day||'');$('#f-agree').checked=!!S.agree;
-showProject();whoLine();go(0);
-if(S.submitted){lockAll();later(()=>toast('This work was submitted on '+S.submittedAt+' and is locked. Press Unlock to edit to change it.'),400);}
-
-return{id:P.id,destroy(){ac.abort();timers.forEach(clearTimeout);timers.clear();toastEl.remove();document.body.classList.remove('locked');}};
-}
-
 /* ---------------------------------- start ---------------------------------- */
-/* always open on the Weeks page: drop any #lab / #project left in the address from last time */
+/* always open on the Weeks page: drop any #lab left in the address from last time */
 if(location.hash)history.replaceState('',document.title,location.pathname+location.search);
 wireCards();
-loadData().then(d=>{if(d){DATA=d;ready();}else{buildWeekButtons();askForFile();}});
+loadData().then(d=>{if(d){DATA=d;ready();}else{buildWeekButtons();}});
 })();
 </script></body></html>
